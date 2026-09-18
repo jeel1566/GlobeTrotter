@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlobeTrotter - Japan 2026 Itinerary &amp; AI Assistant</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              850: '#0c4442',
+              900: '#083836',
+            },
+            primary: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            script: ['Caveat', 'Brush Script MT', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style data-purpose="custom-scrollbars">
+    /* Subtle custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+    }
+  </style>
+<style data-purpose="decorative-styles">
+    .calligraphy-text {
+      font-family: 'Caveat', cursive;
+      letter-spacing: -0.01em;
+    }
+    .map-pattern {
+      background-color: #bbdefb;
+      background-image: 
+        radial-gradient(ellipse at 50% 50%, #cde8f6 0%, #a6d8f5 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#f5f7f9] text-[#1e293b] font-sans antialiased overflow-x-hidden min-h-screen">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none">
+<div class="flex flex-col">
+<!-- Logo Section -->
+<div class="px-6 py-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-teal-800 flex items-center justify-center text-white shadow-sm">
+<i class="w-5 h-5 text-emerald-300" data-lucide="compass"></i>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight text-slate-800 leading-tight">GlobeTrotter</h1>
+<p class="text-[11px] text-slate-400 font-medium tracking-wide">Plan together. Go further.</p>
+</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="mt-4 px-3 space-y-1">
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="home"></i>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl bg-teal-50/70 text-teal-800 font-semibold transition text-sm border border-teal-100/50" href="#">
+<i class="w-4 h-4 text-teal-700" data-lucide="calendar-check"></i>
+<span>My Trips</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="calendar"></i>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="wallet"></i>
+<span>Budget</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="users"></i>
+<span>Community</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="user"></i>
+<span>Profile</span>
+</a>
+</nav>
+</div>
+<!-- Left Sidebar Promo Card & Footnote -->
+<div class="p-4 space-y-4">
+<!-- Travel Inspiration Card -->
+<div class="relative overflow-hidden rounded-2xl h-44 bg-slate-900 group shadow-md cursor-pointer">
+<img alt="Coastal city view" class="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzPTlbfTD_PRFV3nuhY-D-iw6K6Er-zQJNnFkHbiDXqzJNIHqzcxiVp15-TO9naziVoBqX-ir9QQzlxLQaWM2Xa_dvtHbexxY19sWAcUZpcuKGolBO6gA15917YDYMMJuu4UJ6CSzSBiTInMAAtnDQdF21U29r769TziHEMswGnDOpV611bjxsE8DAkBN7v1UH3_TVxgbbsn-Rc0iPElVxEu_HuM2rqiVNRrj-NvHUSl8Nj8ATcaeK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="relative p-4 h-full flex flex-col justify-end text-white">
+<p class="font-script text-xl leading-snug drop-shadow-md text-amber-100">
+              Good plans lead<br/>to great stories.
+            </p>
+</div>
+</div>
+<!-- Utility Links -->
+<div class="pt-2 border-t border-slate-100 space-y-1">
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 text-xs font-medium" href="#">
+<i class="w-4 h-4" data-lucide="settings"></i>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 text-xs font-medium" href="#">
+<i class="w-4 h-4" data-lucide="help-circle"></i>
+<span>Help</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContentArea -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Application Header -->
+<header class="h-14 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0">
+<!-- Search bar -->
+<div class="relative w-96">
+<i class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" data-lucide="search"></i>
+<input class="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-teal-700 placeholder-slate-400" placeholder="Search trips, destinations, or anything..." type="text"/>
+</div>
+<!-- Header Actions & Collaborators -->
+<div class="flex items-center gap-3">
+<!-- Collaborator Avatars -->
+<div class="flex items-center -space-x-1.5">
+<img alt="Avatar" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_-h5O8_oUOfSQPXQ9i6VNWfLSL8rMde9aOv51K0S9iS3EA6BGXz7NaFzg7EaNPrnpl4ekWWINuU_Fj_It9PDD6_yZRENzIfeQQnvshBAIJrCHZ95zenKANqA6s1w5skNcjL642GQs6N93le-hIlLDmEOWQDffKDmMXzau0pLwkjplAEXkUnXojFSlBKvhpVskFaIfRaVafGMwNFNtOZ1RqC1oUvLwtuWPw7dPfhh__NA_jXyR8ebw"/>
+<img alt="Avatar" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClD2bSqOCQZlLOt0Ty-BW1vCnx_Ik2WXrLq71YYec3Hh_O-bREpRqHxin05tc7eD7vWDgVkRTleoZhIQiB4uHgA4zV-9EvGvEspcfyKZ8W6clHlWeZcKVyTKnX4aD3MRX5D32AAq67mj7QlgZIksMDLJQzQ1Mg3uOjF4M8g1hgeswEz_E7Fwuq6XCC146R1dyC6o7DJ3pfNDhrkFDEbHcumKZXWcihaga3WW8ICEXHldDGbUsSx1I-"/>
+<img alt="Avatar" class="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFibwKvNy8rrfIA1K8o4TMN33YZdvQhXyf1sJBJXPyzd4Xr_ILGqTYfcBFDbdYyEk0qeVxE2Mv4aCSf-3wSF-MDm9bdifV7fx5GD36xadagcx-MFGPK1D6I7jLWe8kPx9Lujl16LDtyjuSNjqbWnuK62kB4OV1pUhNj6aLvCdkxZioiJTD2xGHFml4EGuIVKJy4_IbnoGWG_IHPBxuI-dB70WAuzEhwUXUh4l3xJcvrEfceJp8ImlF"/>
+<button class="w-7 h-7 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition text-xs font-semibold shadow-sm">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+</button>
+</div>
+<div class="h-4 w-px bg-slate-200 mx-1"></div>
+<!-- Share & Invite Buttons -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 hover:bg-slate-50 shadow-sm transition">
+<i class="w-3.5 h-3.5" data-lucide="share-2"></i>
+<span>Share</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-900 text-xs font-medium text-white hover:bg-teal-800 shadow-sm transition">
+<i class="w-3.5 h-3.5" data-lucide="user-plus"></i>
+<span>Invite</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+<i class="w-4 h-4" data-lucide="more-horizontal"></i>
+</button>
+</div>
+</header>
+<!-- Scrollable Trip Dashboard Body -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left + Center Content (Trip Overview & Views) -->
+<main class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+<!-- BEGIN: HeroTripBanner -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-sm h-48 bg-slate-900">
+<!-- Pagoda and Mt Fuji Background -->
+<img alt="Mount Fuji with Pagoda and Cherry Blossoms" class="absolute inset-0 w-full h-full object-cover object-center opacity-85" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxIXa_7WW701fEmknJ-OjXmAf1yWrr_6DhuRc1Nvgs7CMw83pnFkaB5Zh5Zy9SYO35h36zt_FkveylN89acbV9KPKgXdyGKr2LhxVg1g0Iat7aEp_6GE8GmEC8QFB0tyMqTi3GNdo06Pnym1g6HQ38WNamizvnIvkDgXbTyJLKqVC7yhnsVcwklkZcxrAEv2O-viRp1gxHqh_jcDVdXVW_BwmrTU426IpPjox5pWAnWuwSNG7v4XKc"/>
+<div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent"></div>
+<div class="relative h-full p-5 flex flex-col justify-between text-white">
+<!-- Back button -->
+<div>
+<a class="inline-flex items-center gap-1.5 text-xs text-slate-200 hover:text-white transition font-medium bg-black/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10" href="#">
+<i class="w-3.5 h-3.5" data-lucide="arrow-left"></i>
+<span>My Trips</span>
+</a>
+</div>
+<!-- Title & Meta -->
+<div class="space-y-1.5">
+<div class="flex items-center gap-2">
+<h2 class="text-2xl font-bold tracking-tight">Japan 2026</h2>
+<button class="text-white/70 hover:text-white transition">
+<i class="w-4 h-4" data-lucide="edit-2"></i>
+</button>
+</div>
+<div class="flex items-center gap-4 text-xs text-slate-200">
+<span class="inline-flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="calendar"></i>
+                    Mar 12 – Mar 20, 2026
+                  </span>
+<span class="inline-flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="map-pin"></i>
+                    4 cities
+                  </span>
+<span class="inline-flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="credit-card"></i>
+                    ₹85,000
+                  </span>
+</div>
+<p class="text-xs text-slate-300 max-w-lg font-light pt-0.5">
+                  Temples, food, cities and cherry blossoms — a journey to experience the best of Japan.
+                </p>
+</div>
+<!-- Calligraphy Watermark -->
+<div class="absolute right-6 bottom-4 text-right pointer-events-none hidden md:block">
+<p class="calligraphy-text text-white/75 text-xl rotate-[-4deg]">Same places,<br/>new you.</p>
+</div>
+</div>
+</div>
+<!-- END: HeroTripBanner -->
+<!-- Navigation Sub-tabs -->
+<div class="flex items-center justify-between border-b border-slate-200/80 pb-1">
+<div class="flex items-center gap-6 text-xs font-semibold">
+<button class="text-teal-800 border-b-2 border-teal-800 pb-2 flex items-center gap-1.5">
+                Itinerary
+              </button>
+<button class="text-slate-400 hover:text-slate-700 transition pb-2">Map</button>
+<button class="text-slate-400 hover:text-slate-700 transition pb-2">Calendar</button>
+<button class="text-slate-400 hover:text-slate-700 transition pb-2">Budget</button>
+<button class="text-slate-400 hover:text-slate-700 transition pb-2">Notes</button>
+<button class="text-slate-400 hover:text-slate-700 transition pb-2">Collaborators</button>
+</div>
+</div>
+<!-- Content Grid: Itinerary List + Map Area -->
+<div class="grid grid-cols-12 gap-5 items-start">
+<!-- BEGIN: ItineraryColumn -->
+<section class="col-span-12 lg:col-span-7 space-y-4">
+<!-- Itinerary Action Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="text-base font-bold text-slate-800">Itinerary</h3>
+<button class="p-1 rounded-md text-slate-400 hover:bg-slate-100">
+<i class="w-3.5 h-3.5" data-lucide="arrow-up-down"></i>
+</button>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-900 text-white text-xs font-medium hover:bg-teal-800 shadow-sm transition">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+<span>Add City</span>
+</button>
+</div>
+<!-- Timeline List Container -->
+<div class="relative pl-6 space-y-4 before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-teal-600/30">
+<!-- Day 1 Card (Expanded) -->
+<div class="relative">
+<!-- Node Badge -->
+<div class="absolute -left-6 top-3 w-6 h-6 rounded-full bg-teal-800 text-white flex items-center justify-center text-[11px] font-bold ring-4 ring-[#f5f7f9]">
+                    1
+                  </div>
+<div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden">
+<!-- City Header -->
+<div class="p-3.5 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3">
+<i class="w-4 h-4 text-slate-300" data-lucide="grip-vertical"></i>
+<img alt="Tokyo Skyline" class="w-14 h-10 rounded-lg object-cover shadow-inner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2RAbJhxR9al7Se5Ar0cz7w4Q_t0iSbOSBQNtsk1I0k2FEab2syexdG8MvgduWmbDpjZLUZX-uow8Cw-CXGC1xqkjUWNod2WuBfBu7wbArufW2rOxmVb5GNFAW81iFbydBBS8kXMW6ChfV2QgqiItlPpFO-2-eIAxnJLZgqkDwvefER0dBdFXvGGF_gOOJvzgB6rrYBqcNVedQfq8WdpdlSq8c76XXiEhiGag7koeVezYakumBHR_d"/>
+<div>
+<h4 class="font-bold text-slate-800 text-sm">Tokyo</h4>
+<p class="text-[11px] text-slate-400">Mar 12 – Mar 13 (2 days)</p>
+</div>
+</div>
+<i class="w-4 h-4 text-slate-400" data-lucide="chevron-up"></i>
+</div>
+<!-- Day Sub-Activities -->
+<div class="px-4 pb-4 pt-1 space-y-2 border-t border-slate-100">
+<!-- Activity 1 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 border border-slate-100 text-xs">
+<div class="flex items-center gap-3">
+<input class="w-3.5 h-3.5 rounded text-teal-700 border-slate-300 focus:ring-0" type="checkbox"/>
+<span class="text-slate-400 font-mono text-[11px] w-14">10:00 AM</span>
+<i class="w-3.5 h-3.5 text-slate-500" data-lucide="plane-landing"></i>
+<span class="font-medium text-slate-700">Arrive at Narita Airport</span>
+</div>
+<i class="w-3.5 h-3.5 text-slate-300" data-lucide="chevron-right"></i>
+</div>
+<!-- Activity 2 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 border border-slate-100 text-xs">
+<div class="flex items-center gap-3">
+<input class="w-3.5 h-3.5 rounded text-teal-700 border-slate-300 focus:ring-0" type="checkbox"/>
+<span class="text-slate-400 font-mono text-[11px] w-14">12:00 PM</span>
+<i class="w-3.5 h-3.5 text-slate-500" data-lucide="bed"></i>
+<span class="font-medium text-slate-700">Check-in at Hotel</span>
+</div>
+<i class="w-3.5 h-3.5 text-slate-300" data-lucide="chevron-right"></i>
+</div>
+<!-- Activity 3 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 border border-slate-100 text-xs">
+<div class="flex items-center gap-3">
+<input class="w-3.5 h-3.5 rounded text-teal-700 border-slate-300 focus:ring-0" type="checkbox"/>
+<span class="text-slate-400 font-mono text-[11px] w-14">02:00 PM</span>
+<i class="w-3.5 h-3.5 text-red-500" data-lucide="map-pin"></i>
+<span class="font-medium text-slate-700">Explore Shibuya Crossing</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-100 text-purple-700">Culture</span>
+</div>
+<i class="w-3.5 h-3.5 text-slate-300" data-lucide="chevron-right"></i>
+</div>
+<!-- Activity 4 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 border border-slate-100 text-xs">
+<div class="flex items-center gap-3">
+<input class="w-3.5 h-3.5 rounded text-teal-700 border-slate-300 focus:ring-0" type="checkbox"/>
+<span class="text-slate-400 font-mono text-[11px] w-14">07:00 PM</span>
+<i class="w-3.5 h-3.5 text-amber-600" data-lucide="utensils"></i>
+<span class="font-medium text-slate-700">Dinner at Ichiran</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-100 text-red-700">Food</span>
+</div>
+<i class="w-3.5 h-3.5 text-slate-300" data-lucide="chevron-right"></i>
+</div>
+<!-- Add Activity Action -->
+<button class="w-full mt-2 py-2 border border-dashed border-slate-200 hover:border-teal-700 rounded-lg text-xs text-teal-800 font-medium flex items-center justify-center gap-1.5 transition">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+<span>Add Activity</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Day 2 Card: Kyoto (Collapsed) -->
+<div class="relative">
+<div class="absolute -left-6 top-3 w-6 h-6 rounded-full bg-teal-800 text-white flex items-center justify-center text-[11px] font-bold ring-4 ring-[#f5f7f9]">
+                    2
+                  </div>
+<div class="bg-white rounded-xl border border-slate-200/80 shadow-sm p-3.5 flex items-center justify-between cursor-pointer hover:border-slate-300 transition">
+<div class="flex items-center gap-3">
+<i class="w-4 h-4 text-slate-300" data-lucide="grip-vertical"></i>
+<img alt="Kyoto Pagoda" class="w-14 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLgRvwqi45idVdqBVQkTmkauTxnIplEXhx_1q7cOtPcVSu1yOfgROoZbeIsC1FDWP55hBCHTPB4Qskqglx8gAHdLd4vpnZMFplhlgPEczVUk5d9sqsapRtlKmzaeW8f6OvtnH5Ln7s5YPJMeD2CxIj6hsMNR-TfZHpUbYYFAXY_ayEplmB3jjodmIZzfYn4OANthWlz7zHzhEBFypVX1ANOxaZ0GdxoaGrhdHqSaVC74lpiQwe6M54"/>
+<div>
+<h4 class="font-bold text-slate-800 text-sm">Kyoto</h4>
+<p class="text-[11px] text-slate-400">Mar 14 – Mar 15 (2 days)</p>
+</div>
+</div>
+<i class="w-4 h-4 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+</div>
+<!-- Day 3 Card: Osaka (Collapsed) -->
+<div class="relative">
+<div class="absolute -left-6 top-3 w-6 h-6 rounded-full bg-teal-800 text-white flex items-center justify-center text-[11px] font-bold ring-4 ring-[#f5f7f9]">
+                    3
+                  </div>
+<div class="bg-white rounded-xl border border-slate-200/80 shadow-sm p-3.5 flex items-center justify-between cursor-pointer hover:border-slate-300 transition">
+<div class="flex items-center gap-3">
+<i class="w-4 h-4 text-slate-300" data-lucide="grip-vertical"></i>
+<img alt="Osaka Dotonbori" class="w-14 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU0SPjjAsp4DS3cM489DIa_o1vI4FqfU7UmzdP5qvfaRZhrJRptWuvR2hcbeBUF3iZtR8kmJclmDpr472s3i_InKqYivmil37Bjc6Y89ycpjuXg4BEm3ajLREUclxkKwGpfJQKmHPxwmcQp97hhArk08_J-JBlhwWZW5GakZlck5OSjC5eAfJhTspWXin3k7ooH60BRBtXl8o2FS5XnItTNxVZRAj_DEUWzRvfDWv52NpZkB4zvo1u"/>
+<div>
+<h4 class="font-bold text-slate-800 text-sm">Osaka</h4>
+<p class="text-[11px] text-slate-400">Mar 16 – Mar 17 (2 days)</p>
+</div>
+</div>
+<i class="w-4 h-4 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+</div>
+<!-- Day 4 Card: Nara (Collapsed) -->
+<div class="relative">
+<div class="absolute -left-6 top-3 w-6 h-6 rounded-full bg-teal-800 text-white flex items-center justify-center text-[11px] font-bold ring-4 ring-[#f5f7f9]">
+                    4
+                  </div>
+<div class="bg-white rounded-xl border border-slate-200/80 shadow-sm p-3.5 flex items-center justify-between cursor-pointer hover:border-slate-300 transition">
+<div class="flex items-center gap-3">
+<i class="w-4 h-4 text-slate-300" data-lucide="grip-vertical"></i>
+<img alt="Nara Deer" class="w-14 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuP7zpuN6h9MZNR9CKYpYlx9RTjOhUtKeFZaFjXPXGqLAVuu-5TrzfIDsj_gz8uCTbLHJbvH8Ihmjl2zWyrPC93DX-hkjSXjw6DMns7I_QRwHmwz0Tf1I2LmcZhC0xQ2lKZ84St4PdqRmEwtdhulAGtQ1KhKKb650InjdsWjeP_wuScvfM1xN7vwRNKfB8oDPbjRT3XxgDRfKl84EBXcF9tDrp-zewMqsI4VpTwUH_u2StnjgHhbrt"/>
+<div>
+<h4 class="font-bold text-slate-800 text-sm">Nara</h4>
+<p class="text-[11px] text-slate-400">Mar 18 – Mar 20 (2 days)</p>
+</div>
+</div>
+<i class="w-4 h-4 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+</div>
+</div>
+<!-- Add Another City Button -->
+<button class="w-full py-2.5 bg-white border border-teal-200/80 hover:bg-teal-50/50 rounded-xl text-xs font-semibold text-teal-900 flex items-center justify-center gap-2 shadow-sm transition">
+<i class="w-4 h-4" data-lucide="plus"></i>
+<span>Add Another City</span>
+</button>
+</section>
+<!-- END: ItineraryColumn -->
+<!-- BEGIN: CenterMapColumn -->
+<section class="col-span-12 lg:col-span-5 space-y-4">
+<!-- Map Card Container -->
+<div class="relative bg-[#a5d5f2] rounded-2xl border border-slate-200 overflow-hidden shadow-sm h-[390px] flex flex-col justify-between p-4">
+<!-- Map Header Switcher -->
+<div class="flex items-center justify-between z-10">
+<div class="bg-white/90 backdrop-blur-sm p-0.5 rounded-lg border border-slate-200/50 flex shadow-sm text-xs font-medium">
+<button class="px-3 py-1 bg-teal-900 text-white rounded-md shadow-xs">Route</button>
+<button class="px-3 py-1 text-slate-600 hover:text-slate-900">Map</button>
+</div>
+</div>
+<!-- Calligraphy note overlay -->
+<div class="absolute top-14 left-4 z-10 pointer-events-none">
+<p class="calligraphy-text text-[#1e485e] text-2xl font-bold leading-none -rotate-6">
+                    Collect<br/>moments<br/>not things.
+                  </p>
+</div>
+<!-- Map Illustration SVG Graphic -->
+<div class="absolute inset-0 w-full h-full">
+<svg class="w-full h-full object-cover" viewbox="0 0 400 480">
+<!-- Sea / Land contours stylized -->
+<path d="M 230,20 Q 250,90 280,140 Q 300,180 270,220 Q 230,250 200,280 Q 150,300 130,340 Q 120,380 180,410 Q 230,420 280,440" fill="none" stroke="#d5ebf7" stroke-linecap="round" stroke-width="40"></path>
+<path d="M 210,50 C 270,100 320,180 270,240 C 220,290 140,300 130,360" fill="none" stroke="#c4e2f3" stroke-linecap="round" stroke-width="24"></path>
+<!-- Japan Landmass Shape (abstract vector representation) -->
+<path d="M260,70 L280,110 L270,160 L295,200 L260,245 L200,270 L170,290 L140,320 L160,345 L210,310 L245,260 L285,210 L300,140 Z" fill="#d9eedb" opacity="0.95" stroke="#bcdbbb" stroke-width="1.5"></path>
+<path d="M120,315 L145,305 L170,335 L135,355 Z" fill="#d9eedb" stroke="#bcdbbb" stroke-width="1.5"></path>
+<!-- Labels -->
+<text fill="#678a78" font-size="11" font-weight="700" letter-spacing="2" x="230" y="180">JAPAN</text>
+<text fill="#719db5" font-size="9" font-style="italic" letter-spacing="1" x="240" y="375">Pacific Ocean</text>
+<!-- Dotted Rail Route: Tokyo -> Kyoto -> Osaka -> Nara -->
+<!-- Tokyo (275, 230), Kyoto (215, 255), Osaka (190, 275), Nara (220, 295) -->
+<path d="M 268,232 L 222,256 L 195,275 L 222,295" fill="none" stroke="#0f766e" stroke-dasharray="4 3" stroke-width="2.5"></path>
+<!-- Train Icon midway -->
+<g transform="translate(240, 238)">
+<circle cx="0" cy="0" fill="#0f766e" r="7"></circle>
+<path d="M-3,-3 L3,-3 L3,2 L-3,2 Z" fill="#ffffff"></path>
+<circle cx="-1.5" cy="1" fill="#0f766e" r="0.6"></circle>
+<circle cx="1.5" cy="1" fill="#0f766e" r="0.6"></circle>
+</g>
+<!-- Tokyo Marker 1 -->
+<g transform="translate(268, 232)">
+<circle cx="0" cy="0" fill="#083836" r="10"></circle>
+<text fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="3.5">1</text>
+<!-- Label Card -->
+<rect fill="#ffffff" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.1))" height="18" rx="9" width="44" x="14" y="-9"></rect>
+<text fill="#1e293b" font-size="9.5" font-weight="bold" text-anchor="middle" x="36" y="3.5">Tokyo</text>
+</g>
+<!-- Kyoto Marker 2 -->
+<g transform="translate(218, 255)">
+<circle cx="0" cy="0" fill="#083836" r="10"></circle>
+<text fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="3.5">2</text>
+<!-- Label Card -->
+<rect fill="#ffffff" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.1))" height="18" rx="9" width="42" x="14" y="-9"></rect>
+<text fill="#1e293b" font-size="9.5" font-weight="bold" text-anchor="middle" x="35" y="3.5">Kyoto</text>
+</g>
+<!-- Osaka Marker 3 -->
+<g transform="translate(195, 275)">
+<circle cx="0" cy="0" fill="#083836" r="10"></circle>
+<text fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="3.5">3</text>
+<!-- Label Card -->
+<rect fill="#ffffff" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.1))" height="18" rx="9" width="42" x="-48" y="-9"></rect>
+<text fill="#1e293b" font-size="9.5" font-weight="bold" text-anchor="middle" x="-27" y="3.5">Osaka</text>
+</g>
+<!-- Nara Marker 4 -->
+<g transform="translate(222, 295)">
+<circle cx="0" cy="0" fill="#083836" r="10"></circle>
+<text fill="#fff" font-size="10" font-weight="bold" text-anchor="middle" x="0" y="3.5">4</text>
+<!-- Label Card -->
+<rect fill="#ffffff" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.1))" height="18" rx="9" width="38" x="14" y="-9"></rect>
+<text fill="#1e293b" font-size="9.5" font-weight="bold" text-anchor="middle" x="33" y="3.5">Nara</text>
+</g>
+</svg>
+</div>
+<!-- Zoom Controls -->
+<div class="absolute bottom-4 right-4 z-10 flex flex-col gap-1.5">
+<div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+<button class="p-1.5 hover:bg-slate-100 text-slate-600 border-b border-slate-100">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+</button>
+<button class="p-1.5 hover:bg-slate-100 text-slate-600">
+<i class="w-3.5 h-3.5" data-lucide="minus"></i>
+</button>
+</div>
+<button class="p-2 bg-white rounded-lg shadow-sm border border-slate-200 hover:bg-slate-100 text-slate-600">
+<i class="w-3.5 h-3.5" data-lucide="crosshair"></i>
+</button>
+</div>
+</div>
+<!-- Trip Summary Card with Torii Illustration -->
+<div class="relative bg-white rounded-2xl border border-slate-200/80 p-4 shadow-sm overflow-hidden">
+<h4 class="font-bold text-slate-800 text-xs mb-3">Trip Summary</h4>
+<div class="grid grid-cols-4 gap-2 text-center relative z-10 max-w-[280px]">
+<div>
+<i class="w-4 h-4 mx-auto text-slate-400 mb-1" data-lucide="map-pin"></i>
+<p class="text-[11px] font-medium text-slate-600">4 cities</p>
+</div>
+<div>
+<i class="w-4 h-4 mx-auto text-slate-400 mb-1" data-lucide="calendar"></i>
+<p class="text-[11px] font-medium text-slate-600">8 days</p>
+</div>
+<div>
+<i class="w-4 h-4 mx-auto text-slate-400 mb-1" data-lucide="compass"></i>
+<p class="text-[11px] font-medium text-slate-600">12 activities</p>
+</div>
+<div>
+<i class="w-4 h-4 mx-auto text-slate-400 mb-1" data-lucide="milestone"></i>
+<p class="text-[11px] font-medium text-slate-600">~1,200 km</p>
+</div>
+</div>
+<!-- Torii Gate Vector Graphic -->
+<div class="absolute right-3 bottom-0 w-24 h-24 pointer-events-none opacity-85">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<path d="M10,25 Q50,20 90,25" fill="none" stroke="#ef4444" stroke-linecap="round" stroke-width="4"></path>
+<path d="M16,33 L84,33" fill="none" stroke="#ef4444" stroke-width="3"></path>
+<rect fill="#ef4444" height="55" width="6" x="25" y="30"></rect>
+<rect fill="#ef4444" height="55" width="6" x="69" y="30"></rect>
+<rect fill="#ef4444" height="12" width="12" x="44" y="23"></rect>
+<line stroke="#1f2937" stroke-width="3" x1="22" x2="34" y1="85" y2="85"></line>
+<line stroke="#1f2937" stroke-width="3" x1="66" x2="78" y1="85" y2="85"></line>
+</svg>
+</div>
+</div>
+</section>
+<!-- END: CenterMapColumn -->
+</div>
+</main>
+<!-- BEGIN: AskAiCopilotDrawer -->
+<aside class="w-[390px] border-l border-slate-200 bg-white flex flex-col shrink-0 shadow-lg relative z-20">
+<!-- Drawer Header -->
+<div class="p-4 border-b border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center">
+<i class="w-4 h-4" data-lucide="sparkles"></i>
+</div>
+<div>
+<h3 class="font-bold text-sm text-slate-800 leading-tight">Ask AI</h3>
+<p class="text-[11px] text-slate-400">Your personal travel planner</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 rounded-lg p-1">
+<i class="w-4 h-4" data-lucide="x"></i>
+</button>
+</div>
+<!-- Mode Selector Pill Switcher -->
+<div class="px-4 py-3 border-b border-slate-100">
+<div class="bg-slate-100/90 p-1 rounded-xl flex text-xs font-medium">
+<button class="flex-1 py-1.5 rounded-lg bg-teal-900 text-white shadow-sm font-semibold transition text-center">
+                Generate
+              </button>
+<button class="flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition text-center">
+                Modify
+              </button>
+<button class="flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition text-center">
+                Suggestions
+              </button>
+</div>
+</div>
+<!-- Drawer Chat Stream Body -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- User Prompt Card -->
+<div class="bg-[#f1f5f9] rounded-2xl rounded-tr-sm p-3 text-xs text-slate-700 leading-relaxed max-w-[90%] ml-auto border border-slate-200/50">
+              Plan a 2 day itinerary for Kyoto with a mix of culture, food and scenic spots. Keep it under ₹15,000.
+            </div>
+<!-- AI Response Section -->
+<div class="space-y-3">
+<!-- AI Header Message -->
+<div class="flex items-start gap-2 text-xs text-slate-700">
+<div class="w-6 h-6 rounded-full bg-teal-900 text-teal-200 flex items-center justify-center shrink-0 mt-0.5">
+<i class="w-3.5 h-3.5" data-lucide="bot"></i>
+</div>
+<p class="pt-0.5 font-medium">Here's a suggested 2-day itinerary for Kyoto!</p>
+</div>
+<!-- Structured Itinerary Suggestion Box -->
+<div class="space-y-4 pl-3">
+<!-- Day 1 - Kyoto Classics -->
+<div class="space-y-2.5">
+<h5 class="text-xs font-bold text-slate-800">Day 1 – Kyoto Classics</h5>
+<!-- Timeline items -->
+<div class="relative pl-5 space-y-3 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
+<!-- Item 1 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">09:00 AM</span>
+<i class="w-3.5 h-3.5 text-indigo-500" data-lucide="landmark"></i>
+<span class="text-slate-700 font-medium">Fushimi Inari Shrine</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-purple-100 text-purple-700">Culture</span>
+</div>
+<!-- Item 2 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">12:00 PM</span>
+<i class="w-3.5 h-3.5 text-amber-500" data-lucide="utensils-crossed"></i>
+<span class="text-slate-700 font-medium">Lunch at Nishiki Market</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-red-100 text-red-700">Food</span>
+</div>
+<!-- Item 3 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">02:00 PM</span>
+<i class="w-3.5 h-3.5 text-red-500" data-lucide="map-pin"></i>
+<span class="text-slate-700 font-medium">Kiyomizu-dera Temple</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-purple-100 text-purple-700">Culture</span>
+</div>
+<!-- Item 4 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">05:00 PM</span>
+<i class="w-3.5 h-3.5 text-amber-600" data-lucide="footprints"></i>
+<span class="text-slate-700 font-medium">Gion District Walk</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-purple-100 text-purple-700">Culture</span>
+</div>
+<!-- Item 5 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">07:00 PM</span>
+<i class="w-3.5 h-3.5 text-emerald-600" data-lucide="utensils"></i>
+<span class="text-slate-700 font-medium">Dinner – Kaiseki (budget option)</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-red-100 text-red-700">Food</span>
+</div>
+</div>
+</div>
+<!-- Day 2 - Nature & Local Life -->
+<div class="space-y-2.5 pt-1">
+<h5 class="text-xs font-bold text-slate-800">Day 2 – Nature &amp; Local Life</h5>
+<!-- Timeline items -->
+<div class="relative pl-5 space-y-3 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
+<!-- Item 1 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">09:00 AM</span>
+<i class="w-3.5 h-3.5 text-emerald-500" data-lucide="trees"></i>
+<span class="text-slate-700 font-medium">Arashiyama Bamboo Grove</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-emerald-100 text-emerald-700">Nature</span>
+</div>
+<!-- Item 2 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">12:00 PM</span>
+<i class="w-3.5 h-3.5 text-amber-500" data-lucide="coffee"></i>
+<span class="text-slate-700 font-medium">Lunch at Arashiyama</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-red-100 text-red-700">Food</span>
+</div>
+<!-- Item 3 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">02:00 PM</span>
+<i class="w-3.5 h-3.5 text-purple-600" data-lucide="temple"></i>
+<span class="text-slate-700 font-medium">Tenryu-ji Temple</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-purple-100 text-purple-700">Culture</span>
+</div>
+<!-- Item 4 -->
+<div class="relative text-xs flex items-center justify-between">
+<div class="absolute -left-5 top-1.5 w-2 h-2 rounded-full border-2 border-teal-800 bg-white"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] text-slate-400">05:00 PM</span>
+<i class="w-3.5 h-3.5 text-amber-600" data-lucide="sunset"></i>
+<span class="text-slate-700 font-medium">Togetsukyo Bridge (sunset)</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[9px] font-medium bg-emerald-100 text-emerald-700">Nature</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recommendation Action Buttons -->
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2 rounded-xl bg-teal-900 text-white text-xs font-semibold hover:bg-teal-800 shadow-sm flex items-center justify-center gap-1.5 transition">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+<span>Add to Itinerary</span>
+</button>
+<button class="flex-1 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 flex items-center justify-center gap-1.5 shadow-xs transition">
+<i class="w-3.5 h-3.5" data-lucide="rotate-ccw"></i>
+<span>Try Different Plan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Drawer Footer & Chat Input Bar -->
+<div class="p-3 border-t border-slate-200 space-y-2.5 bg-white">
+<!-- Quick Suggestion Pill Chips -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+<button class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-[10px] font-medium text-slate-600 whitespace-nowrap transition">
+                Suggest hidden gems
+              </button>
+<button class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-[10px] font-medium text-slate-600 whitespace-nowrap transition">
+                Vegetarian food options
+              </button>
+<button class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-[10px] font-medium text-slate-600 whitespace-nowrap transition">
+                Keep it budget friendly
+              </button>
+</div>
+<!-- Input Box -->
+<div class="relative flex items-center">
+<input class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-700 focus:bg-white" placeholder="Ask anything about your trip..." type="text"/>
+<button class="absolute right-2 w-7 h-7 rounded-lg bg-teal-900 text-white flex items-center justify-center hover:bg-teal-800 transition">
+<i class="w-3.5 h-3.5" data-lucide="arrow-right"></i>
+</button>
+</div>
+<!-- AI Slogan Badge -->
+<p class="text-center text-[10px] text-slate-400 pt-0.5">
+              Travel better with AI ✨
+            </p>
+</div>
+</aside>
+<!-- END: AskAiCopilotDrawer -->
+</div>
+</div>
+<!-- END: MainContentArea -->
+</div>
+<script data-purpose="icon-initialization">
+    // Initialize Lucide icons on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+</body></html>

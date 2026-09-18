@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlobeTrotter - Japan 2026 Calendar</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Phosphor Icons for precise interface matching -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<!-- Custom Fonts & System Styling -->
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
+    }
+  </style>
+<style data-purpose="custom-scrollbars">
+    /* Custom subtle scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 flex h-screen overflow-hidden antialiased select-none">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 z-20" data-purpose="primary-navigation">
+<!-- Top section: Logo & Nav items -->
+<div>
+<!-- Brand Logo -->
+<div class="h-16 flex items-center px-6 gap-3">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-700 to-teal-500 flex items-center justify-center text-white shadow-sm shadow-teal-700/20">
+<i class="ph-bold ph-compass text-xl"></i>
+</div>
+<div>
+<span class="font-extrabold text-lg tracking-tight text-slate-800 block leading-tight">GlobeTrotter</span>
+<span class="text-[10px] text-slate-400 font-medium tracking-wide">Plan together. Go further.</span>
+</div>
+</div>
+<!-- Navigation links -->
+<nav class="mt-4 px-3 space-y-1">
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-house text-lg"></i>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-suitcase-simple text-lg"></i>
+<span>My Trips</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl bg-teal-50/70 text-teal-800 font-semibold text-sm transition-colors" href="#">
+<i class="ph-bold ph-calendar text-lg text-teal-700"></i>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-wallet text-lg"></i>
+<span>Budget</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-users-three text-lg"></i>
+<span>Community</span>
+</a>
+<a class="flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-user text-lg"></i>
+<span>Profile</span>
+</a>
+</nav>
+</div>
+<!-- Middle & Bottom section: Quote card & Utility Nav -->
+<div class="p-4 space-y-4">
+<!-- Illustrated Motivational Card -->
+<div class="relative overflow-hidden rounded-2xl bg-sky-100 p-4 min-h-[160px] flex flex-col justify-between border border-sky-200/60 group shadow-sm">
+<img alt="Scenic Amalfi coastline" class="absolute inset-0 w-full h-full object-cover object-center opacity-85 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNtIQodJ7JXwsqAcjuc9GZh2dmytzVpZFFjBqbRxPbjX_7Vq_-N09mUJa7MtUVh0wBu3tCr-CTvumhVIwHlNN7STFAoms3oOWyP3zyId09wgkI73mRbJQQeTMnjpaE0xo04fLpjG-0xdXMTg9U3HYof_RS-2EFKRD-JZb0-tfn8dL7FtX_Vq8t9GefbcfgL-2xZ055WVIxGKvvc6dIcB8_szKWX-4w49uqL3WF704ie5f5RgofJc7A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/40 pointer-events-none"></div>
+<div class="relative z-10 font-handwriting text-slate-800 text-xl font-bold leading-tight drop-shadow-sm">
+          Good<br/>plans lead<br/>to great<br/>stories.
+        </div>
+</div>
+<!-- Settings / Help links -->
+<div class="pt-2 border-t border-slate-100 space-y-1">
+<a class="flex items-center gap-3.5 px-3 py-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-gear text-lg"></i>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3.5 px-3 py-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<i class="ph ph-question text-lg"></i>
+<span>Help</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- Main Content wrapper -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- BEGIN: TopGlobalHeader -->
+<header class="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between shrink-0 z-10" data-purpose="global-header">
+<!-- Search input bar -->
+<div class="relative w-96">
+<i class="ph ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-base"></i>
+<input class="w-full pl-10 pr-4 py-1.5 text-xs bg-slate-50/70 border border-slate-200 rounded-xl focus:outline-none focus:border-teal-600 focus:bg-white transition-all text-slate-700 placeholder-slate-400" placeholder="Search trips, cities, or activities..." type="text"/>
+</div>
+<!-- Right profile and notification controls -->
+<div class="flex items-center gap-4">
+<button class="relative w-9 h-9 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors" title="Notifications">
+<i class="ph ph-bell text-lg"></i>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2.5 cursor-pointer pl-1 pr-1 py-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Jeel Patel" class="w-8 h-8 rounded-full object-cover ring-1 ring-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbnbBEWZuTon7Tt4OxnDwK3NiQqCCDLqPQOk9WUplWMoR2c_EwJx9IH6SxhdUCWz9sgn92_WKoG-4mrz8O9iTCVYI8XTsMDsDAiuK7d5xJjQ4KV6MXTGK0Fx64h3f8n0t1YjGNEz2gt3G4vRNpvOyuNsseNloInSe87rnEhPMCOM5j7-NY-bJ85GkHA2sDrmr0s4VtTFtRwjZHGKRsHcQUxQAhj8yQcjGew2Fi3Pqcw0JOcxpYsZZt"/>
+<div class="text-left hidden sm:block">
+<span class="text-xs font-bold text-slate-800 block leading-tight">Jeel Patel</span>
+<span class="text-[10px] text-slate-400">@jeel</span>
+</div>
+<i class="ph ph-caret-down text-slate-400 text-xs"></i>
+</div>
+</div>
+</header>
+<!-- END: TopGlobalHeader -->
+<!-- Central Body View Area -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Timeline and Calendar Center Panel -->
+<main class="flex-1 flex flex-col min-w-0 bg-[#f8fafc] overflow-y-auto">
+<!-- BEGIN: TripHeaderBanner -->
+<div class="p-6 pb-2" data-purpose="trip-banner">
+<div class="relative bg-white rounded-2xl border border-slate-200/80 p-5 overflow-hidden flex items-center justify-between shadow-xs">
+<!-- Left Trip Overview Details -->
+<div class="relative z-10 flex items-center gap-4">
+<button class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors shadow-2xs">
+<i class="ph ph-arrow-left text-lg"></i>
+</button>
+<div>
+<h1 class="text-2xl font-black tracking-tight text-slate-900">Japan 2026</h1>
+<div class="flex items-center gap-3 mt-1 text-xs text-slate-500">
+<span class="font-medium">Mar 12 — Mar 20, 2026</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span>4 cities</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span>Shared with 3 people</span>
+<div class="flex -space-x-1.5 ml-1">
+<img class="w-5 h-5 rounded-full object-cover ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt_1FrAFYMmSkcxKdYspkET5NaYPtEwwS_Agnm7_-tny49uWDG917Wi1QMNUk4Hb8lg8ElvjyNcPgzZDzkhxW-fL4H6wNpZOVuknTFEhIlC1cWuohWJ2XufIA-HhQLGDEwSiMA9y9cCK8IG9veDmiMwRkoJlDFlNJEweq_esUJDA8iNdlqVVCeZQLO6GR9VC6w4v415viYlvs4gt0iiPFJ8d11Q9HjBhqAIDMhcn9InBRI7MwgmtZA"/>
+<img class="w-5 h-5 rounded-full object-cover ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDBOFOSr93yj_ZBbey2iKNH--Cskyty8I5OREYpUs9b9O5o3qifjjVUhLokjIRVTJ0Ta1UogG2UUQpdpSwhmKNeD5gHEUtb6vJQzQI--MTZsHqMuOeR3vOM_S5XutHGeHgw5IdCc8TgwZRbheLkgkE8SI1dGFirWrChAc4pkGjQDErOyRYlAPw0NSMXMv8Wk7xnKruFHWVl_o13JkLVMEdU7RemkLIZWHhe-Uur3XU8z-Hwfm7jLkt"/>
+<img class="w-5 h-5 rounded-full object-cover ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBW5Hcl-EJtl18vn7aKT3oBOBMTKqS1-9a4WCPSGW5N7Zasfgb_Co2oILG2e8B-Sz36LYhYKPOqrllIimWRPKMoYnoi5LSAlcAOFLqOnwXsGwpDs_u4vI65pXIBIZXCuE025DyY49vLdUY4lfAvKhOosqFGsSE2Ja9YEg9TReSToQ_x_3xZyGRVvouzZBojEKQpradWZVAdBPjCSbDqLIu76a--1enfu69C6IvoSY04Sm-9ryXo9Qm"/>
+<button class="w-5 h-5 rounded-full bg-slate-100 ring-2 ring-white flex items-center justify-center text-[9px] font-bold text-slate-600">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Hand-written slogan decoration -->
+<div class="hidden xl:block absolute left-[44%] -rotate-6 font-handwriting text-slate-700 text-sm pointer-events-none z-10 leading-tight">
+              Same<br/>places,<br/>new you.
+            </div>
+<!-- Background decorative Mount Fuji Banner Graphic -->
+<div class="absolute right-0 top-0 bottom-0 w-2/5 overflow-hidden pointer-events-none">
+<img alt="Mount Fuji and Cherry Blossoms" class="w-full h-full object-cover object-right opacity-35 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0YlCJSvXi3KCYbTFXwF4EMyjhhwGs20pnvyrqyBct3l3seBaD9nrq79zcoZcf13D3BWwLdK9YJVmyD4KqIytR2sdZydybYyv_6F-lH4V234YpFp8IqOVIBRKm_QEsgxMQQ7KMHqr7OKKlsi7YEc0YbS3joLXXzU77Rj07oOgLe21nTNkjSLcA7SR3_lGccrrVyIGnfDgP31yJUZvPYVsR1mbGI59Sd9UEYZPc2oPwkC5vdxXlboxL"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
+</div>
+<!-- Header Action buttons -->
+<div class="relative z-10 flex items-center gap-2.5">
+<button class="px-3.5 py-2 bg-white/90 backdrop-blur rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-1.5 shadow-2xs transition-colors">
+<i class="ph ph-share-network text-sm"></i>
+<span>Share</span>
+</button>
+<button class="px-3.5 py-2 bg-teal-800 rounded-xl text-xs font-semibold text-white hover:bg-teal-900 flex items-center gap-1.5 shadow-sm shadow-teal-900/20 transition-colors">
+<i class="ph ph-pencil-simple text-sm"></i>
+<span>Edit Trip</span>
+</button>
+<button class="w-8 h-8 rounded-xl border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors shadow-2xs">
+<i class="ph-bold ph-dots-three text-base"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- END: TripHeaderBanner -->
+<!-- BEGIN: NavigationTabs -->
+<div class="px-6" data-purpose="trip-tabs">
+<div class="flex items-center gap-7 border-b border-slate-200/80 text-xs font-semibold text-slate-500">
+<button class="py-3 hover:text-slate-800 transition-colors">Itinerary</button>
+<button class="py-3 hover:text-slate-800 transition-colors">Map</button>
+<button class="py-3 text-teal-800 border-b-2 border-teal-800 font-bold">Calendar</button>
+<button class="py-3 hover:text-slate-800 transition-colors">Budget</button>
+<button class="py-3 hover:text-slate-800 transition-colors">Notes</button>
+<button class="py-3 hover:text-slate-800 transition-colors">Collaborators</button>
+</div>
+</div>
+<!-- END: NavigationTabs -->
+<!-- BEGIN: ViewSwitcherAndControls -->
+<div class="px-6 py-4 flex items-center justify-between" data-purpose="timeline-controls">
+<!-- Switcher tabs (Month, Week, Day, Timeline) -->
+<div class="inline-flex p-1 bg-slate-200/60 rounded-xl text-xs font-medium text-slate-600 gap-1">
+<button class="px-3.5 py-1.5 rounded-lg hover:text-slate-900 transition-colors">Month</button>
+<button class="px-3.5 py-1.5 rounded-lg hover:text-slate-900 transition-colors">Week</button>
+<button class="px-3.5 py-1.5 rounded-lg hover:text-slate-900 transition-colors">Day</button>
+<button class="px-4 py-1.5 rounded-lg bg-teal-800 text-white font-semibold shadow-xs">Timeline</button>
+</div>
+<!-- Date Navigation buttons -->
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-2xs transition-colors">Today</button>
+<div class="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden shadow-2xs">
+<button class="p-1.5 hover:bg-slate-50 text-slate-600 transition-colors"><i class="ph ph-caret-left text-xs"></i></button>
+<button class="p-1.5 hover:bg-slate-50 text-slate-600 transition-colors"><i class="ph ph-caret-right text-xs"></i></button>
+</div>
+</div>
+</div>
+<!-- END: ViewSwitcherAndControls -->
+<!-- BEGIN: TimelineCalendarGrid -->
+<div class="flex-1 px-6 pb-4 overflow-x-auto min-w-[960px]" data-purpose="calendar-grid">
+<div class="bg-white border border-slate-200/90 rounded-2xl shadow-xs overflow-hidden">
+<!-- Dates Header Columns -->
+<div class="grid grid-cols-10 border-b border-slate-200 text-center text-xs bg-slate-50/40">
+<div class="py-3 border-r border-slate-100"></div> <!-- Time axis header space -->
+<!-- Thu Mar 12 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Thu</span>
+<span class="font-bold text-slate-700">Mar 12</span>
+</div>
+<!-- Fri Mar 13 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Fri</span>
+<span class="font-bold text-slate-700">Mar 13</span>
+</div>
+<!-- Sat Mar 14 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Sat</span>
+<span class="font-bold text-slate-700">Mar 14</span>
+</div>
+<!-- Sun Mar 15 (Active Selected Day) -->
+<div class="py-2.5 border-r border-slate-100 bg-teal-50/60 text-teal-800">
+<span class="block text-[11px] font-bold">Sun</span>
+<span class="font-black text-teal-900">Mar 15</span>
+</div>
+<!-- Mon Mar 16 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Mon</span>
+<span class="font-bold text-slate-700">Mar 16</span>
+</div>
+<!-- Tue Mar 17 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Tue</span>
+<span class="font-bold text-slate-700">Mar 17</span>
+</div>
+<!-- Wed Mar 18 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Wed</span>
+<span class="font-bold text-slate-700">Mar 18</span>
+</div>
+<!-- Thu Mar 19 -->
+<div class="py-2.5 border-r border-slate-100">
+<span class="block text-[11px] text-slate-400 font-medium">Thu</span>
+<span class="font-bold text-slate-700">Mar 19</span>
+</div>
+<!-- Fri Mar 20 -->
+<div class="py-2.5">
+<span class="block text-[11px] text-slate-400 font-medium">Fri</span>
+<span class="font-bold text-slate-700">Mar 20</span>
+</div>
+</div>
+<!-- Destination City Bands Header -->
+<div class="grid grid-cols-10 border-b border-slate-200 bg-slate-50/20 py-2.5 px-0 items-center">
+<div class="text-[10px] text-slate-400 font-semibold px-2 text-center">DESTINATION</div>
+<!-- Tokyo (2 days) -->
+<div class="col-span-2 px-1.5">
+<div class="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-blue-50/80 border-b-2 border-blue-500 shadow-2xs">
+<img alt="Tokyo" class="w-6 h-6 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYrLQXMH91ZeIA2c8CDBiCYu0HDHFuuxFoOLS6tjUxjUIZ_31fe3mE0w8mT8QazgoW9qFDO6ozcMmtbqU64K-wVPQ3UVHYEn9zAq45YzekrY3g7PWbLrCxqeXIGeWfrWoHjvyT15MCzzrZCFjDlHj_fwtyrk_V6MKuQXl1Ps_WHUoQOUBEEt8ed-BxNA5r7shMs5vTn9UIjgevAsGucTpAPvDcxncqnkXquWQMv0kNSUFH8eUCclOC"/>
+<div>
+<span class="text-xs font-bold text-blue-900 block leading-none">Tokyo</span>
+<span class="text-[9px] text-blue-600 font-medium">(2 days)</span>
+</div>
+</div>
+</div>
+<!-- Kyoto (2 days) -->
+<div class="col-span-2 px-1.5">
+<div class="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-rose-50/80 border-b-2 border-rose-500 shadow-2xs">
+<img alt="Kyoto" class="w-6 h-6 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLNXgyV9ZBtfSnZ7TEAO58cEYRl-XC6U-xop3iZiPxIP328H4-uTimJbz0UaAqtsSKPq48d7kYsCjLIC2vVQEZyektITalor-kwzwDpS9lK8CC821XhwPvM63P3PBpgIEJmeOSGstnFmuRDzVDVk16jmIb9LWo0GXYyduZV6dH8Cwbikvhu7sRx4k8tpHcip0J7EbZEonGDC9jp80JoaC28uPX9UQfqI3hPy8YahZhLc6oq7rADBAL"/>
+<div>
+<span class="text-xs font-bold text-rose-900 block leading-none">Kyoto</span>
+<span class="text-[9px] text-rose-600 font-medium">(2 days)</span>
+</div>
+</div>
+</div>
+<!-- Osaka (2 days) -->
+<div class="col-span-2 px-1.5">
+<div class="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-amber-50/80 border-b-2 border-amber-500 shadow-2xs">
+<img alt="Osaka" class="w-6 h-6 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCinHvZCsj8ny0rDJD0TSpeP6V9hm-jUkuyxcPprGR4xOiMIpfWJ126Z2rA9V1_yHu-fiixMN8xh6huzS9-hcKXbF68frrzljFeSZ-3iLhr5x21wYya05kKHhMVFfvL9i3vqy2NarZUnERkerIm5x9-6OIHFGrsWGstfsyppgM66x8tgRqCX-moLDWL2seCglz7a2oC7KIkOBm3ZrRgmk8QiD00I_EtIoMMOGJxvBG7sSnpYIKonR4w"/>
+<div>
+<span class="text-xs font-bold text-amber-900 block leading-none">Osaka</span>
+<span class="text-[9px] text-amber-600 font-medium">(2 days)</span>
+</div>
+</div>
+</div>
+<!-- Nara (2 days) -->
+<div class="col-span-2 px-1.5">
+<div class="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-emerald-50/80 border-b-2 border-emerald-500 shadow-2xs">
+<img alt="Nara" class="w-6 h-6 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATrAzi9p0C7QMbCwC3J3KYUogteFLnJoKg_aIaRiD4fLahP3yQUJii3kRWhJZCjveCRHWscxHukNWLz_IC25Vw_CvyED5q2LfIVkm1uI7MaOHAfgCpu-q4vCZUAJ45MwcLNxwbdPmgzeEAqai92OadbMCwPyLZXTTgLAvSGzzxJHfV6FGFaYjQAHOXCtuAYlJeE247iov2cbmrrU-eN7A6IXuqIjURjKs6_Q1bkSUFncXv2upDSS-Z"/>
+<div>
+<span class="text-xs font-bold text-emerald-900 block leading-none">Nara</span>
+<span class="text-[9px] text-emerald-600 font-medium">(2 days)</span>
+</div>
+</div>
+</div>
+<div class="col-span-1"></div>
+</div>
+<!-- Time Slots & Event Matrix -->
+<div class="relative grid grid-cols-10 text-xs">
+<!-- Vertical Hour Labels Column -->
+<div class="border-r border-slate-200 divide-y divide-slate-100 text-[11px] font-semibold text-slate-400 text-center">
+<div class="h-16 flex items-center justify-center">8 AM</div>
+<div class="h-16 flex items-center justify-center">10 AM</div>
+<div class="h-16 flex items-center justify-center">12 PM</div>
+<div class="h-16 flex items-center justify-center">2 PM</div>
+<div class="h-16 flex items-center justify-center">4 PM</div>
+<div class="h-16 flex items-center justify-center">6 PM</div>
+<div class="h-16 flex items-center justify-center">8 PM</div>
+<div class="h-16 flex items-center justify-center">10 PM</div>
+</div>
+<!-- Column: Day 1 (Thu Mar 12) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Arrive at Narita Airport -->
+<div class="h-12 bg-sky-100/90 hover:bg-sky-200/80 border-l-2 border-sky-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-sky-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-airplane-landing"></i> Arrive at Narita Airport
+                    </span>
+<span class="text-[9px] text-sky-700">10:00 AM – 11:30 AM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Check-in at Hotel -->
+<div class="h-12 bg-indigo-100/90 hover:bg-indigo-200/80 border-l-2 border-indigo-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-indigo-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-buildings"></i> Check-in at Hotel
+                    </span>
+<span class="text-[9px] text-indigo-700">12:00 PM – 1:00 PM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Shibuya Crossing -->
+<div class="h-14 bg-red-100/90 hover:bg-red-200/80 border-l-2 border-red-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-red-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-camera"></i> Shibuya Crossing
+                    </span>
+<span class="text-[9px] text-red-700">2:00 PM – 4:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Dinner at Ichiran -->
+<div class="h-12 bg-emerald-100/90 hover:bg-emerald-200/80 border-l-2 border-emerald-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-emerald-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-fork-knife"></i> Dinner at Ichiran
+                    </span>
+<span class="text-[9px] text-emerald-700">6:00 PM – 7:30 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 2 (Fri Mar 13) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Tsukiji Market -->
+<div class="h-12 bg-amber-100/90 hover:bg-amber-200/80 border-l-2 border-amber-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-amber-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-shopping-cart"></i> Tsukiji Market
+                    </span>
+<span class="text-[9px] text-amber-700">9:00 AM – 11:00 AM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Meiji Shrine -->
+<div class="h-12 bg-teal-100/90 hover:bg-teal-200/80 border-l-2 border-teal-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-teal-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-flower-lotus"></i> Meiji Shrine
+                    </span>
+<span class="text-[9px] text-teal-700">11:30 AM – 1:00 PM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Harajuku -->
+<div class="h-12 bg-purple-100/90 hover:bg-purple-200/80 border-l-2 border-purple-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-purple-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-storefront"></i> Harajuku
+                    </span>
+<span class="text-[9px] text-purple-700">2:00 PM – 4:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Team Dinner -->
+<div class="h-14 bg-sky-100/90 hover:bg-sky-200/80 border-l-2 border-sky-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-sky-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-users"></i> Team Dinner
+                    </span>
+<span class="text-[9px] text-sky-700">7:00 PM – 9:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 3 (Sat Mar 14) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Fushimi Inari -->
+<div class="h-14 bg-emerald-100/90 hover:bg-emerald-200/80 border-l-2 border-emerald-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-emerald-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-path"></i> Fushimi Inari
+                    </span>
+<span class="text-[9px] text-emerald-700">9:00 AM – 11:00 AM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 4 (Sun Mar 15) Active Day Column -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70 bg-teal-50/20">
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Lunch at Nishiki -->
+<div class="h-12 bg-fuchsia-100/90 hover:bg-fuchsia-200/80 border-l-2 border-fuchsia-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-fuchsia-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-fork-knife"></i> Lunch at Nishiki
+                    </span>
+<span class="text-[9px] text-fuchsia-700">12:00 PM – 1:30 PM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Kiyomizu-dera -->
+<div class="h-16 bg-red-100/90 hover:bg-red-200/80 border-l-2 border-red-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all shadow-xs">
+<span class="text-[10px] font-bold text-red-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-camera"></i> Kiyomizu-dera
+                    </span>
+<span class="text-[9px] text-red-700">2:00 PM – 5:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Gion Walk -->
+<div class="h-14 bg-amber-100/90 hover:bg-amber-200/80 border-l-2 border-amber-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-amber-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-footprints"></i> Gion Walk
+                    </span>
+<span class="text-[9px] text-amber-700">6:00 PM – 8:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 5 (Mon Mar 16) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Osaka Castle -->
+<div class="h-14 bg-sky-100/90 hover:bg-sky-200/80 border-l-2 border-sky-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-sky-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-camera"></i> Osaka Castle
+                    </span>
+<span class="text-[9px] text-sky-700">9:00 AM – 11:00 AM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Lunch Dotonbori -->
+<div class="h-12 bg-amber-100/90 hover:bg-amber-200/80 border-l-2 border-amber-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-amber-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-fork-knife"></i> Lunch – Dotonbori
+                    </span>
+<span class="text-[9px] text-amber-700">12:00 PM – 1:30 PM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Shinsekai -->
+<div class="h-12 bg-purple-100/90 hover:bg-purple-200/80 border-l-2 border-purple-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-purple-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-buildings"></i> Shinsekai
+                    </span>
+<span class="text-[9px] text-purple-700">2:00 PM – 4:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Dinner Okonomiyaki -->
+<div class="h-14 bg-emerald-100/90 hover:bg-emerald-200/80 border-l-2 border-emerald-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-emerald-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-cooking-pot"></i> Dinner – Okonomiyaki
+                    </span>
+<span class="text-[9px] text-emerald-700">6:00 PM – 8:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 6 (Tue Mar 17) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 7 (Wed Mar 18) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Nara Park -->
+<div class="h-14 bg-emerald-100/90 hover:bg-emerald-200/80 border-l-2 border-emerald-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-emerald-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-tree"></i> Nara Park
+                    </span>
+<span class="text-[9px] text-emerald-700">9:00 AM – 11:00 AM</span>
+</div>
+</div>
+<div class="h-16 p-1">
+<!-- Todai-ji Temple -->
+<div class="h-14 bg-rose-100/90 hover:bg-rose-200/80 border-l-2 border-rose-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-rose-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-flower-lotus"></i> Todai-ji Temple
+                    </span>
+<span class="text-[9px] text-rose-700">12:00 PM – 2:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Kasuga Taisha -->
+<div class="h-12 bg-sky-100/90 hover:bg-sky-200/80 border-l-2 border-sky-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-sky-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-buildings"></i> Kasuga Taisha
+                    </span>
+<span class="text-[9px] text-sky-700">3:00 PM – 5:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 8 (Thu Mar 19) -->
+<div class="relative border-r border-slate-100 divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Local Cafes -->
+<div class="h-12 bg-amber-100/90 hover:bg-amber-200/80 border-l-2 border-amber-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-amber-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-coffee"></i> Local Cafés
+                    </span>
+<span class="text-[9px] text-amber-700">10:00 AM – 12:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Shopping -->
+<div class="h-16 bg-purple-100/90 hover:bg-purple-200/80 border-l-2 border-purple-500 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-purple-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-bag"></i> Shopping
+                    </span>
+<span class="text-[9px] text-purple-700">1:00 PM – 4:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Farewell Dinner -->
+<div class="h-14 bg-emerald-100/90 hover:bg-emerald-200/80 border-l-2 border-emerald-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-emerald-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-champagne"></i> Farewell Dinner
+                    </span>
+<span class="text-[9px] text-emerald-700">6:00 PM – 8:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+<!-- Column: Day 9 (Fri Mar 20) -->
+<div class="relative divide-y divide-slate-100/70">
+<div class="h-16"></div>
+<div class="h-16 p-1">
+<!-- Check out & Departure -->
+<div class="h-14 bg-sky-100/90 hover:bg-sky-200/80 border-l-2 border-sky-600 rounded-lg p-1.5 flex flex-col justify-center cursor-pointer transition-all">
+<span class="text-[10px] font-bold text-sky-900 leading-tight flex items-center gap-1">
+<i class="ph-bold ph-airplane-takeoff"></i> Check out &amp; Departure
+                    </span>
+<span class="text-[9px] text-sky-700">10:00 AM – 12:00 PM</span>
+</div>
+</div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+<div class="h-16"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- END: TimelineCalendarGrid -->
+<!-- BEGIN: TripProgressFooter -->
+<div class="p-6 pt-2" data-purpose="trip-progress-footer">
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+<!-- Progress status and metrics -->
+<div class="lg:col-span-2 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">Trip Progress</span>
+<span class="text-slate-500 font-semibold">72% complete</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-teal-700 h-full rounded-full transition-all duration-500" style="width: 72%;"></div>
+</div>
+<!-- 4 Stat Badges -->
+<div class="grid grid-cols-4 gap-4 pt-1">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-base shrink-0">
+<i class="ph ph-map-pin"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">4/4</span>
+<span class="text-[10px] text-slate-400 font-medium">Cities</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-base shrink-0">
+<i class="ph ph-list-checks"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">12/16</span>
+<span class="text-[10px] text-slate-400 font-medium">Activities</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-base shrink-0">
+<i class="ph ph-calendar-check"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">8</span>
+<span class="text-[10px] text-slate-400 font-medium">Days</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-base shrink-0">
+<i class="ph ph-wallet"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">₹62,300 <span class="text-[10px] font-normal text-slate-400">/ ₹85,000</span></span>
+<span class="text-[10px] text-slate-400 font-medium">Budget</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Motivational travel quote box -->
+<div class="border-t lg:border-t-0 lg:border-l border-slate-100 lg:pl-6 text-center lg:text-left flex flex-col justify-center">
+<blockquote class="italic text-slate-700 font-medium text-xs leading-relaxed">
+                “Travel far enough, you meet yourself.”
+              </blockquote>
+<cite class="text-[10px] font-semibold text-slate-400 not-italic mt-1.5 block">
+                — David Mitchell
+              </cite>
+</div>
+</div>
+</div>
+<!-- END: TripProgressFooter -->
+</main>
+<!-- BEGIN: RightSidebar -->
+<aside class="w-80 bg-white border-l border-slate-200/80 p-5 shrink-0 overflow-y-auto hidden 2xl:flex flex-col gap-5" data-purpose="date-and-activity-panel">
+<!-- Month Picker Calendar -->
+<div class="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-4">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-bold text-slate-800">March 2026</span>
+<div class="flex items-center gap-1 text-slate-500">
+<button class="p-1 hover:bg-slate-200/60 rounded-md transition-colors"><i class="ph ph-caret-left text-xs"></i></button>
+<button class="p-1 hover:bg-slate-200/60 rounded-md transition-colors"><i class="ph ph-caret-right text-xs"></i></button>
+</div>
+</div>
+<!-- Month Grid -->
+<div class="grid grid-cols-7 gap-1 text-center text-[10px]">
+<span class="text-slate-400 font-medium py-1">Sun</span>
+<span class="text-slate-400 font-medium py-1">Mon</span>
+<span class="text-slate-400 font-medium py-1">Tue</span>
+<span class="text-slate-400 font-medium py-1">Wed</span>
+<span class="text-slate-400 font-medium py-1">Thu</span>
+<span class="text-slate-400 font-medium py-1">Fri</span>
+<span class="text-slate-400 font-medium py-1">Sat</span>
+<span class="py-1 text-slate-600">1</span>
+<span class="py-1 text-slate-600">2</span>
+<span class="py-1 text-slate-600">3</span>
+<span class="py-1 text-slate-600">4</span>
+<span class="py-1 text-slate-600">5</span>
+<span class="py-1 text-slate-600">6</span>
+<span class="py-1 text-slate-600">7</span>
+<span class="py-1 text-slate-600">8</span>
+<span class="py-1 text-slate-600">9</span>
+<span class="py-1 text-slate-600">10</span>
+<span class="py-1 text-slate-600">11</span>
+<span class="py-1 text-slate-600">12</span>
+<span class="py-1 text-slate-600">13</span>
+<span class="py-1 text-slate-600">14</span>
+<!-- Selected 15 -->
+<span class="py-1 bg-teal-800 text-white font-bold rounded-full shadow-2xs">15</span>
+<span class="py-1 text-slate-600">16</span>
+<span class="py-1 text-slate-600">17</span>
+<span class="py-1 text-slate-600">18</span>
+<span class="py-1 text-slate-600">19</span>
+<span class="py-1 text-slate-600">20</span>
+<span class="py-1 text-slate-600">21</span>
+<span class="py-1 text-slate-600">22</span>
+<span class="py-1 text-slate-600">23</span>
+<span class="py-1 text-slate-600">24</span>
+<span class="py-1 text-slate-600">25</span>
+<span class="py-1 text-slate-600">26</span>
+<span class="py-1 text-slate-600">27</span>
+<span class="py-1 text-slate-600">28</span>
+<span class="py-1 text-slate-600">29</span>
+<span class="py-1 text-slate-600">30</span>
+<span class="py-1 text-slate-600">31</span>
+</div>
+</div>
+<!-- Selected Day Card (Sun, Mar 15, 2026) -->
+<div class="border border-slate-200/80 rounded-2xl overflow-hidden shadow-2xs">
+<div class="p-3.5 pb-2 border-b border-slate-100 flex items-center justify-between">
+<h3 class="text-xs font-bold text-slate-900">Sun, Mar 15, 2026</h3>
+</div>
+<!-- Kyoto Banner Image -->
+<div class="relative h-20 overflow-hidden">
+<img alt="Kyoto Pagoda" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlZT3OCpGI8EaPjQgD4WComoqU9K9S_xOudcTDqFAg6kKmM9CBm_VJbEM4FyJrgOnfw_5f2F6IGdo9V3pygPHnPPVqNKoP-zJw69d1PiaSvT-pqv7gt_xFLus_5tjnHxItk33GGZ-rto23P1kXgnQgWaqKGihx7cknh-vqmmghhBVaUJ-t8g4fujFd77cWUK1iq4bH-brIYiUNleIVPfQs_th6gAMT-pZR-Wlker2fqHNGxB4ZzaZv"/>
+</div>
+<!-- Location & Weather strip -->
+<div class="p-3.5 pt-2.5 pb-2 flex items-center justify-between text-xs border-b border-slate-100">
+<div class="flex items-center gap-1.5 font-bold text-slate-800">
+<i class="ph-bold ph-map-pin text-rose-500"></i>
+<span>Kyoto</span>
+</div>
+<div class="flex items-center gap-1.5 text-slate-500 text-[11px]">
+<i class="ph ph-sun text-amber-500 text-sm"></i>
+<span>18°C Partly cloudy</span>
+</div>
+</div>
+<!-- Activity List for Selected Day -->
+<div class="p-3.5 space-y-3.5">
+<!-- Item 1 -->
+<div class="flex items-start gap-3 text-xs">
+<span class="text-[10px] font-semibold text-slate-400 w-12 shrink-0 pt-0.5">9:00 AM</span>
+<div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+<i class="ph-bold ph-path text-sm"></i>
+</div>
+<div>
+<span class="font-bold text-slate-800 block text-xs leading-tight">Fushimi Inari Shrine</span>
+<span class="text-[10px] text-slate-400">2 hours</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start gap-3 text-xs">
+<span class="text-[10px] font-semibold text-slate-400 w-12 shrink-0 pt-0.5">12:00 PM</span>
+<div class="w-7 h-7 rounded-lg bg-rose-50 text-rose-700 flex items-center justify-center shrink-0">
+<i class="ph-bold ph-fork-knife text-sm"></i>
+</div>
+<div>
+<span class="font-bold text-slate-800 block text-xs leading-tight">Lunch at Nishiki Market</span>
+<span class="text-[10px] text-slate-400">1.5 hours</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-start gap-3 text-xs">
+<span class="text-[10px] font-semibold text-slate-400 w-12 shrink-0 pt-0.5">2:00 PM</span>
+<div class="w-7 h-7 rounded-lg bg-red-50 text-red-700 flex items-center justify-center shrink-0">
+<i class="ph-bold ph-camera text-sm"></i>
+</div>
+<div>
+<span class="font-bold text-slate-800 block text-xs leading-tight">Kiyomizu-dera Temple</span>
+<span class="text-[10px] text-slate-400">3 hours</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-start gap-3 text-xs">
+<span class="text-[10px] font-semibold text-slate-400 w-12 shrink-0 pt-0.5">6:00 PM</span>
+<div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center shrink-0">
+<i class="ph-bold ph-footprints text-sm"></i>
+</div>
+<div>
+<span class="font-bold text-slate-800 block text-xs leading-tight">Gion District Walk</span>
+<span class="text-[10px] text-slate-400">2 hours</span>
+</div>
+</div>
+<!-- Add Activity Button -->
+<button class="w-full mt-2 py-2 bg-slate-50 hover:bg-slate-100 text-teal-800 text-xs font-bold rounded-xl border border-dashed border-teal-600/40 flex items-center justify-center gap-1.5 transition-colors">
+<i class="ph-bold ph-plus text-xs"></i>
+<span>Add Activity</span>
+</button>
+</div>
+</div>
+<!-- Decorative Card: Collect Moments Not Things -->
+<div class="relative overflow-hidden rounded-2xl bg-amber-50/50 p-4 border border-amber-200/50 h-32 flex items-center justify-between group shadow-2xs">
+<img alt="Mountain Landscape" class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH0c9ObtnoOZZ6_X7MY6D82HYry6LVM0Lac0mJl_XPr0gfGBZFBJ2lBHiEI3xJJsSOeWK2TPkUUcjEob6T9-uhZ4z-dqdRBnwXveU2tbgLrKW1X-iEoe5JiI8pQeD9UXytfYmouvkHjiRhVa4sxazJczg2UgSyNQh4qPD9W18HflIvmtZ5Bp85DWSP5GdcEabSl4xPDb9X2jKFZIq-ieV_SE979Rc9pymYTBVAd962Aj1KJ39vVygk"/>
+<div class="relative z-10 font-handwriting text-slate-800 text-xl font-bold leading-tight drop-shadow-xs">
+            Collect<br/>moments<br/>not things.
+          </div>
+<div class="relative z-10 text-teal-800 text-3xl opacity-80">
+<i class="ph-fill ph-plant"></i>
+</div>
+</div>
+</aside>
+<!-- END: RightSidebar -->
+</div>
+</div>
+</body></html>

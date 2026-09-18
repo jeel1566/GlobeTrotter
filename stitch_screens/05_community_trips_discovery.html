@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlobeTrotter - Community Trips</title>
+<!-- Load Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Caveat (for handwritten script) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            handwriting: ['Caveat', 'cursive'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf9',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars">
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8f9fb] text-slate-800 font-sans antialiased min-h-screen flex">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-64 flex-shrink-0 bg-white border-r border-slate-100 flex flex-col justify-between p-6 fixed h-full z-20" data-purpose="main-navigation-sidebar">
+<div class="space-y-8">
+<!-- Logo -->
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<div>
+<span class="text-xl font-extrabold tracking-tight text-slate-900 leading-none block">GlobeTrotter</span>
+<span class="text-[10px] text-slate-400 font-medium tracking-wide">Plan together. Go further.</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="space-y-1.5">
+<!-- Home -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors font-medium text-sm" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Home
+        </a>
+<!-- My Trips -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors font-medium text-sm" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          My Trips
+        </a>
+<!-- Calendar -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors font-medium text-sm" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Calendar
+        </a>
+<!-- Budget -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors font-medium text-sm" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Budget
+        </a>
+<!-- Community (Active) -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl bg-teal-50 text-teal-800 font-semibold text-sm transition-colors shadow-sm" href="#">
+<svg class="w-5 h-5 stroke-teal-700" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Community
+        </a>
+<!-- Profile -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors font-medium text-sm" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Profile
+        </a>
+</nav>
+</div>
+<!-- Sidebar Bottom Section -->
+<div class="space-y-4 pt-4">
+<!-- Decorative Travel Card -->
+<div class="relative rounded-2xl overflow-hidden shadow-sm h-48 group cursor-pointer bg-slate-100">
+<img alt="Cliffside village" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGeNsC0mI7cIasdWBxGNYZleroULNrWIQRmgF8cIimvG_1XSyrgff1F04QGd78FgEi6EukuSgxzAAaImvCQ8eBxhJq3Uu8yXSjn84IoqlYxK5IpquFpl3CgEV6qghTQd_2F16R61fz-FpZdV-PBPVa_Hnbyf2JunBaybRBZrZzprgBlguedLk6BNBXutLGLH3Ai78C_JFMDonfYjHe6pDBtQmVodHcIJNWXvb6r2raA3nzj5OJQQRP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
+<div class="absolute top-4 left-4 right-4">
+<p class="font-handwriting text-2xl text-slate-800 leading-tight drop-shadow-sm font-semibold transform -rotate-2">
+            Good plans<br/>lead to<br/>great stories.
+          </p>
+</div>
+</div>
+<!-- Settings & Help -->
+<div class="space-y-1 pt-2 border-t border-slate-100">
+<a class="flex items-center gap-3.5 px-3.5 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors text-sm font-medium" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Settings
+        </a>
+<a class="flex items-center gap-3.5 px-3.5 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors text-sm font-medium" href="#">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Help
+        </a>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-64 flex flex-col min-w-0">
+<!-- BEGIN: TopBar -->
+<header class="h-20 bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between border-b border-slate-100" data-purpose="top-navigation-bar">
+<!-- Search Input -->
+<div class="relative w-96">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<input class="w-full bg-[#f4f5f8] border-none text-xs rounded-xl pl-10 pr-4 py-2.5 text-slate-700 placeholder-slate-400 focus:ring-2 focus:ring-teal-600 focus:bg-white transition-all outline-none" placeholder="Search destinations, trips, or travelers..." type="text"/>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-5">
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-full hover:bg-slate-100 transition-colors text-slate-600">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+<!-- User Profile Dropdown -->
+<div class="flex items-center gap-3 pl-2 border-l border-slate-100 cursor-pointer group">
+<img alt="Jeel Patel" class="w-10 h-10 rounded-full object-cover border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRCucd9Funow7OGwQiHtiNjiHdI9BUbr1sDx0TwqI750IHps6njV4g07R8tGwCFzuEtt3M1KBL6yz5RAs_gLO6qY4TzACtqoF8d1VKZp6itn8AuE2kMTTSyfkRTe0lvUyoLhCo9RYh3IT4SnNEbLk7--JVhQi5QkT8TsfPMosrTAGHznM-nCZwthciGzXDTprQ7hLTsPPXQhxC-jY-eDl8FgoRZLWxLxLM0trKpPQSz6cadGYnM2s3"/>
+<div class="text-left">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">Jeel Patel</span>
+<svg class="w-3.5 h-3.5 stroke-slate-500 group-hover:stroke-teal-700" fill="none" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xs text-slate-400 font-normal">@jeel</span>
+</div>
+</div>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- Main Body Layout: Center Content + Right Rail -->
+<main class="p-8 flex gap-8">
+<!-- Central Stream Area -->
+<section class="flex-1 min-w-0 space-y-6" data-purpose="community-feed">
+<!-- BEGIN: HeroBanner -->
+<div class="relative rounded-3xl overflow-hidden bg-[#f3efe6] border border-slate-100 min-h-[190px] flex items-center px-10 py-8 shadow-sm">
+<!-- Right side panoramic Santorini image overlay -->
+<div class="absolute right-0 top-0 bottom-0 w-2/3 overflow-hidden pointer-events-none">
+<img alt="Santorini coastal panorama" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwgSY4v5mE7SZ7tP6rlTbewPTX-coJmE9sDxGL80GWH10eMf_spk20lq0QK989vEJyrSZfWxYtd-a-BvSMb2IMfVU83VDWNTBjVvXa0OJ_obFOc75FO9AcGi5M8wJAmsD5unGC36iy4AES2g7NHdRm7Uc9AILmRdHgaBJT-Lj9XxyDM6osUeWbCvDu4E36S4GU_I_xSNWVYILxwUXk4vLoEvG6eWtOdUTbOxgtVnecTKLDG2wDwYI"/>
+<!-- Fade Gradient to smoothly transition from text background to image -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#f3efe6] via-[#f3efe6]/80 to-transparent"></div>
+</div>
+<!-- Hero Left Content -->
+<div class="relative z-10 max-w-md">
+<span class="text-xs font-bold text-teal-800 tracking-wider uppercase">Community</span>
+<h1 class="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mt-1 mb-2">
+              Discover trips,<br/>by real travelers.
+            </h1>
+<p class="text-xs text-slate-600 leading-relaxed font-normal">
+              Get inspired, copy itineraries, and explore the world through stories from our community.
+            </p>
+</div>
+<!-- Handwriting Note Annotation -->
+<div class="absolute left-[44%] top-1/2 -translate-y-1/2 hidden md:block z-10 transform -rotate-12">
+<span class="font-handwriting text-2xl text-slate-800 leading-none drop-shadow-sm">
+              Same<br/>places,<br/>new you.
+            </span>
+</div>
+</div>
+<!-- END: HeroBanner -->
+<!-- BEGIN: FilterAndSearchToolbar -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+<!-- Category Pills -->
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-teal-800 text-white shadow-sm hover:bg-teal-900 transition-colors">
+              All Trips
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">
+              Trending
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">
+              Latest
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">
+              Most Liked
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">
+              Editors' Picks
+            </button>
+</div>
+<!-- Secondary Search & Filter Trigger -->
+<div class="flex items-center gap-2.5">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<svg class="w-3.5 h-3.5 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<input class="bg-white border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-700 w-60" placeholder="Search trips, destinations, or users..." type="text"/>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+<svg class="w-3.5 h-3.5 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Filters
+            </button>
+</div>
+</div>
+<!-- END: FilterAndSearchToolbar -->
+<!-- BEGIN: TripCardsGrid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-2" data-purpose="trip-cards-collection">
+<!-- Card 1: Japan in 10 Days -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Pagoda in Kyoto, Japan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKqMCmn0QrLMpYPK5cy069gWu1Js-IhmyDhSgy9nu7op5Xxq8W0kuGkbRgeD5JBUOnijKIecux-Sl_JsqCg8bMkNiZmY9b6cCYBgdOQ-96tx3LtQiC-XmKSdJP9_87kZrrPY-19hfUIUm--pzy-kq-9WaG6JOE0KTmq7O9E3-RHitEFeTzfKzFbuBlHSm27lvm-LZrzhMKZ-l3GWIKjbHLm4qAa8-3tijM7gw6vE383Z4ABLJfn5AX"/>
+<!-- Bookmark Icon -->
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Likes Pill -->
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  1.2K
+                </div>
+</div>
+<!-- Content details -->
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Japan in 10 Days</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">A perfect blend of tradition and modern life.</p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-indigo-50 text-indigo-700">Culture</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700">Food</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">City</span>
+</div>
+</div>
+</div>
+<!-- Author info footer -->
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Riya Sharma" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYd9FDrKDkmMf6G2ng6pTBZoNh93rluPwc7uZUsZrIcpiP3t9u5DwsSCHt0P_AikD_izglRtrjKmwNUeRGASICi3o_43GFxS5_5qkyIrLASapfQif5DLBs5DBkjztiFoQ7rZlHe-4Bd3cIIWIvEWdhGMXLWkLZPUdvisYxV_zHsFYM7btBIV28Y5XVXhf286aUdpVLT5gbcKEyXnNbH__FWHfG5hAFdJMdwepoqgR25KTaVyPfLPGP"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Riya Sharma</h4>
+<span class="text-[10px] text-slate-400 font-normal">5 days ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+<!-- Card 2: Amalfi Coast Escape -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Amalfi Coast Cliffs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR6qHIJF8Je6KJUOboBR8ahxwiAlf3d4KbaOdlylCSNbcUKaJJm3dY5sOBgeiErRcv6Oi6NfZ-3aZ7WXofoPAUpPIl7RPYlTlFWz7Lvl7B4_UTttRn4q8X0Rv6X4S0XaqPwOd1oqMd2WkP4pqKp1di4QiY_3Xe28IcBjXN6AYwwB7bxqUN-84nEA1dQQl2QQUhPg6W3C6PQ1QzcIZd8pd0kR9h-zKUGXKbpmEE5L7JqZNAWwux7mql"/>
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  892
+                </div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Amalfi Coast Escape</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Sun, sea and all small towns.</p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700">Beach</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700">Nature</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-cyan-50 text-cyan-700">Relax</span>
+</div>
+</div>
+</div>
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Arjun Mehta" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmKixnEJ1ybQfcjeeLWTPx0O3_rA5OnLFviYxxdKQC1fSik_yK_0F1cg4sPDjFqy49XstYn5EraEEvvZ-mHckYeOGLqnpjpl_PRzxGg6yy_zIzk2Evm7rVGTTGZQUq6xLkyi2jjgLuqMjY_wPbK1-vXkQQnJcsL1KRNzNHQL8pojOKkKr8KMq6ceAYwIKE4NxC6B-JXQuA4CVdGVlq8K-sILwF9cp8D3yJhDXsncOuUXnbPuPcX8md"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Arjun Mehta</h4>
+<span class="text-[10px] text-slate-400 font-normal">1 week ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+<!-- Card 3: Swiss Alps Adventure -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Swiss Alps Mountain View" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3axCB1yZr2mGo1tUDFGmP2dgSYKVrQfewyuH3QsJTJOtrjGMlZQtEaQoiq6Qfs-UlfBDvKLxI5VZcecS2D7Kfd8oRzzxaoM8AsPPJ6xr-OioXir7VW4RSXM4EwSwFNy3pUl12Z5t0lSj3x4Ul495pfp7326RG1XMY27S_7gViNff2fSgAiAuP0iV19Ze6IlkH9yqa8V0zsdGHgCltPmVvIKBhotnYtzbQR3hPupLZU9pHxFrCou-Q"/>
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  645
+                </div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Swiss Alps Adventure</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Mountains, lakes and endless views.</p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700">Nature</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-orange-50 text-orange-700">Adventure</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">Photography</span>
+</div>
+</div>
+</div>
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Tenzin Norbu" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf6thtT55m_JVtsqsrLtPiFpKbB-4TEPe2E2KN51HcW4wUkqGhS2v_6R7iBZLvyP7sxv7GUb1a-JeER3AHZE7aHQ71lLjUy5v4wlV9ZE44kfSegJimZrkETd2yIV8y_71E0SW6zD0IpR0JF_9R9O56I422fzCfRvvykX0osAbxyxGrVVu1_9gKEE48xDh59dop9HfQaelM4yi8jRyz-deXpN9LTwsOQ5D1Ev09F4nMhrXLA1kfuSH1"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Tenzin Norbu</h4>
+<span class="text-[10px] text-slate-400 font-normal">2 weeks ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+<!-- Card 4: Bali Escape -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Bali Water Temple" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy6Zy4mwRwcWE2FpZWCTAartDNnTPgCEaa6oGpF3RwDkIkptzyPIo--UaY8YmPTJSvjT2GaHp877JrlureOkwBsq8XCjjWh_qXG4Tj-UgLMk5lf6Ry5x-Aktz4-WjljONwdC6cdB15pUpitj4xrCzhHJOMuHp9FunN8Y8p-0ZEBlTG7dlflSp_51coh4IEhLoP32_c2Cc8InU9dKJ3y7KXt2gmnu147cd5z7UDKIhQ6X2j3fCCbqeC"/>
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  1.1K
+                </div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Bali Escape</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Beaches, temples and good food.</p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700">Beach</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-sky-50 text-sky-700">Culture</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700">Food</span>
+</div>
+</div>
+</div>
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Sneha Iyer" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Oj0DtOvzNcFmro7R04F0JnLsxMb3PJtREjYNLIny2QZmpxtC_VuqgPrV9h0vqIUs37-EyAcL3iBvW4p4KNuE2yNlLMBCK37Psb9Iipl92DaxkjOh6igze2MiDxfGUmgBJ_VvLOAGjr834_m4_TBcK6tg1qxzp-2gr4DU63d17SBid_O_veeP9sVPh_lRoW72Qs2H4ma-5l72nBCkHcMYd14bWVTa-fq-OZ_y6WS9KqEsuToszmxf"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Sneha Iyer</h4>
+<span class="text-[10px] text-slate-400 font-normal">3 days ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+<!-- Card 5: Barcelona City Break -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Sagrada Familia Barcelona" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9N0BYlsQtICjTlAo7Q0mBY_39t0bwA7jriM90HLznQC5-eQxruGlPbbYMq2eaBTKJwfFEE46qfQmWRFDI0HRWnNLpgb9jKpNBxtFzAPC9kpW0WoJrc0_gWf0NJruDH7e3szdDt8p_Z_cPvmdeDjLVDP8GggAWahD2Au0tlyTZ10oQkBBcCCEvndnVkhK68FWgCkojwlddGd-ZkZ69dJVklIxPfEex6n7bVsYEv7HhtIKMsev5u3sK"/>
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  780
+                </div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Barcelona City Break</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Art, architecture and amazing food.</p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">City</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700">Food</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-indigo-50 text-indigo-700">Culture</span>
+</div>
+</div>
+</div>
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Karan Malhotra" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABK96zkVFGCXt8wFizjKuF2ZBNBEcyd2whtdxtz8KAy3EJL_2uzyYMaCz8-fBOJlDMngf18G2w1eXCiSUQAQ3a3AdGF5mgxawfYLWHfQMf4FOCmmtzDUXzooywajrCLOKOCbLR15n49hqm4Oatj1LlajCOOvBym8-MI7crgPFKa_iqOrPg3Hf6ok9Cgr6xWqlF_xBJ8g2-E1DMemtcPz6F0cRjkNjaqo8hfDzFOlOizj6YnUlgvq59"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Karan Malhotra</h4>
+<span class="text-[10px] text-slate-400 font-normal">1 week ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+<!-- Card 6: Iceland Roadtrip -->
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-44 group cursor-pointer overflow-hidden">
+<img alt="Northern lights cabin in Iceland" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZQZxM1lfnCglb9rVvS3hWCcfthdMc-KGRMt-Rw6fmZ6wzxTbQYlgOEnznWVT_eDJNqC2Zg6_LzyJVFGf_uRolgbqcnm9F64gQS8goBcxuUWE--hFYV-B4AynbRSYyXXnuQKDyK-QsIOGd_2Df6wPL7SWeOdaV0OkjmNHKa9_KDaaGNzabiqyWDeCFfFOzNZAXW4DFfss7uF7IGyqmltdlOV8wwhF3JADlZ0IZAYAm9bfes0EbWj1j"/>
+<button aria-label="Bookmark trip" class="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-sm text-white transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="absolute bottom-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1.5">
+<svg class="w-3 h-3 fill-white" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+                  553
+                </div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-slate-900 text-sm hover:text-teal-700 cursor-pointer transition-colors">Iceland Roadtrip</h3>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Waterfalls, glaciers and the northern lights.</p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700">Nature</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-orange-50 text-orange-700">Adventure</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">Winter</span>
+</div>
+</div>
+</div>
+<div class="px-4 pb-4 pt-1 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2.5">
+<img alt="Elena Park" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMdfv4OCK4ql0A3dagRm1EB0JPwu8o7OHqcCaloL8OMPavmcsFsZj7oNeWHzdelNobn2_IKw5zPZ_DKKsr3SFRjq9VOh6Uph160FGnBgdBaAV1sia9bWH7UkGPxXF8z6nc39vuy2U9_uo4BxwPpJiOAlr9MVoWcHl5xsSQg0xBnz9H43DCII29jI25VQouhctRl9Blhg8nLTynDWK8X3xopuneMaNkNjrPyYVsZnBOQNibYDzsvYEq"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-800 leading-none">Elena Park</h4>
+<span class="text-[10px] text-slate-400 font-normal">2 weeks ago</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<circle cx="5" cy="12" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+</article>
+</div>
+<!-- END: TripCardsGrid -->
+</section>
+<!-- BEGIN: RightRailWidgets -->
+<aside class="w-72 flex-shrink-0 space-y-6" data-purpose="right-sidebar-widgets">
+<!-- Widget 1: Trending Destinations -->
+<section aria-labelledby="trending-heading" class="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 stroke-teal-700" fill="none" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<h2 class="text-xs font-bold text-slate-900 tracking-tight" id="trending-heading">Trending Destinations</h2>
+</div>
+<a class="text-[11px] font-semibold text-teal-700 hover:underline" href="#">See all</a>
+</div>
+<ol class="space-y-3.5">
+<!-- Item 1 -->
+<li class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-3 text-center">1</span>
+<img alt="Japan thumbnail" class="w-9 h-9 rounded-full object-cover ring-1 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfwayzWMUZ5e3tA35W1gfihYzd-oy6HbrCn81daWx8lqHK35pa8zAqJ_G7ArBJ2uB2_W9wO90zM48VO43eMGcaYPtqQPIfI8qPH0Hy9SXwjNgitzkSBB3kpyhVKyAeWy_ic83vuaCT-cNwIqU8PN8b41mqRlL4fkkiM8jmsFLi-JqWspLkzQPAWDmw7R4ueHJy_3EOmeY0DkIrPXJInegiTy1J37PGOdz_74V0RMyngS1xvzcsqop1"/>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-900 truncate">Japan</p>
+<p class="text-[11px] text-slate-400">1.2K trips</p>
+</div>
+</li>
+<!-- Item 2 -->
+<li class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-3 text-center">2</span>
+<img alt="Italy thumbnail" class="w-9 h-9 rounded-full object-cover ring-1 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0NnI_-qctPBNvwjEMEw5Apmj-qx5xRszdAwM0_3-OZl7LY4r2GflWqB7qC28liA3eYuP30M-Va5VG69Aug1HVKO6yZcXw9dfjzV316RUQYmTov-s7hlXxCmoGAsZ5IIdGu9q69Sq4txYofJMqippftaTvJ_7px6uU7nMh6J7Q_TNNsSjjv1_CVTiwbrm9pxIyCtywAs6jWtuiXhlmI06jEfwaoeFbrZpCOV68PJL0pFbQbq_fMe-p"/>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-900 truncate">Italy</p>
+<p class="text-[11px] text-slate-400">980 trips</p>
+</div>
+</li>
+<!-- Item 3 -->
+<li class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-3 text-center">3</span>
+<img alt="Switzerland thumbnail" class="w-9 h-9 rounded-full object-cover ring-1 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD6F1yEpjyzRDs_-rmNBdTrHwRLwL8lnRoDFQeMDaCd42esdSBm2WkQpLogl4DsprfsxUPrFJMKP1bIiU478Ry0WExl2-FD5M1qbd_oYXbaK1O13p0G3VYpbW1yIXHFoDQcPVKeIjQABrxNRovUscycmEDtrR41KY1itN05J-o-L6b1_GqWpLLMhWSX_l8QZSOPClOBQf9nMokYqeWoCm75YA7bQM31YFdPbwQ8nl_4U5utoTifM29"/>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-900 truncate">Switzerland</p>
+<p class="text-[11px] text-slate-400">842 trips</p>
+</div>
+</li>
+<!-- Item 4 -->
+<li class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-3 text-center">4</span>
+<img alt="Bali thumbnail" class="w-9 h-9 rounded-full object-cover ring-1 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcb-fFG11Z379jnmvCLCSysE-yBsh7ukwm74xsERQVb-umWdNHeToUJ50Syh5rT0ui-3HWBBm-TJ4OCcVaPvCOSYAOcMgjhmFNNAxUq54wX_iMLsaWvnlC-HiDHUXKj9193hYMROB_dX9Vak5Gmvab62g6wJUUTlq6X6dwEZheUqrPGtvuS5hj2mJmvN5RlW6BJjE_XmfUtd5_trCEdkbLNorBczO64vY1tSoQ1jldDYxPszkcaB5x"/>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-900 truncate">Bali</p>
+<p class="text-[11px] text-slate-400">790 trips</p>
+</div>
+</li>
+<!-- Item 5 -->
+<li class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-400 w-3 text-center">5</span>
+<img alt="Iceland thumbnail" class="w-9 h-9 rounded-full object-cover ring-1 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89dTImznDhWXte6q-T-9wizaEB9dLTBFCo4TYSta3WAn5UaIV7CdVKomgY--YqWY5RWE1uRpuv4H4rodYswLJTu5A8Y9K5ov89w7D-udv2S4KX2XkA3WEF2b4Tn6WLhsBsJwOROzFxkE3Jr2f7NgfvCxywQD5C6-zK2-z-707j84G-Jj1EU7pkGOkcpGSXXyJ9KUFwX2PPXavbfN39Ic3ZUapfB04KphLjhRKZzTVB8r297eDruea"/>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-900 truncate">Iceland</p>
+<p class="text-[11px] text-slate-400">640 trips</p>
+</div>
+</li>
+</ol>
+</section>
+<!-- Widget 2: Share Your Journey Callout Card -->
+<section class="relative bg-[#ebf4f1] rounded-2xl p-5 border border-teal-100/60 overflow-hidden shadow-sm" data-purpose="share-journey-promo">
+<!-- Dismiss button -->
+<button aria-label="Dismiss banner" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-slate-600 transition-colors">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Nature/landscape vector illustration on corner -->
+<div class="absolute -right-4 -bottom-4 w-28 h-28 pointer-events-none opacity-80">
+<svg fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 90 Q30 40 70 80 T110 90 Z" fill="#0f766e" opacity="0.2"></path>
+<path d="M40 90 Q60 30 90 70 T120 90 Z" fill="#14b8a6" opacity="0.3"></path>
+<circle cx="75" cy="35" fill="#cbd5e1" opacity="0.4" r="14"></circle>
+</svg>
+</div>
+<div class="flex items-center gap-2 mb-2 text-teal-800">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<h3 class="text-xs font-bold text-slate-900">Share your journey</h3>
+</div>
+<p class="text-[11px] text-slate-600 leading-relaxed mb-4 relative z-10">
+            Inspire other travelers and showcase your adventures.
+          </p>
+<a class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-teal-800 hover:bg-teal-900 text-white text-xs font-semibold rounded-xl transition-colors shadow-sm relative z-10" href="#">
+            Publish a Trip
+            <svg class="w-3.5 h-3.5 stroke-current" fill="none" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</section>
+<!-- Widget 3: Top Travelers -->
+<section aria-labelledby="travelers-heading" class="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xs font-bold text-slate-900 tracking-tight" id="travelers-heading">Top Travelers</h2>
+<a class="text-[11px] font-semibold text-teal-700 hover:underline" href="#">See all</a>
+</div>
+<ol class="space-y-3.5">
+<!-- Traveler 1 -->
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold text-slate-400 w-2.5">1</span>
+<img alt="Riya Sharma" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5zUNPT-Q1-JxlbpWVClW3dsyOlemcpMn6q-3WTnK9oQRzDuutacNGb3BzQ76sDreDIhqIhu0iZ9U-GlUR29GqHEN0I36ZmW65tjW_QJ0RmLREf4wZWHMj4RC04XFyC9krCJx5v-DvNwSpTKPL8WnlppHT9DTwgW8CflQuZLNzgfjI8Vvt_0JXA9MRr4kuURGALykt_zy_ePTa6RwCJ2XisYUORg0OcvNZ4kXBRLjlDriC-Op0uywz"/>
+<div>
+<h4 class="text-xs font-bold text-slate-800 leading-none">Riya Sharma</h4>
+<p class="text-[10px] text-slate-400 mt-0.5">12 trips • 4.2K likes</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-medium rounded-lg border border-slate-200 transition-colors">
+                Follow
+              </button>
+</li>
+<!-- Traveler 2 -->
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold text-slate-400 w-2.5">2</span>
+<img alt="Arjun Mehta" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaxH1iKDeHPbud9pNfkDTzc1BJB_TM43VBvJu8M-r-LSvQt7oWqTnJ_SGIJN10fdJolxMYCTqEvDWRAGDQjMEtp4dkAGqsBP8uWSoCWU8HI8DxJLxuiZDWRuwV3wYADvJtjpaJttvNcCt67NlYRO3zTYjwkP0PYksift-ea6mH8BVDjukPw-BPy5wRIWLwmB8Y9oEvatrbBhHgs5mWADEPBiP-QnJR5w3yJMCTwEXNmVOOCvdAa7NQ"/>
+<div>
+<h4 class="text-xs font-bold text-slate-800 leading-none">Arjun Mehta</h4>
+<p class="text-[10px] text-slate-400 mt-0.5">10 trips • 3.1K likes</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-medium rounded-lg border border-slate-200 transition-colors">
+                Follow
+              </button>
+</li>
+<!-- Traveler 3 -->
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold text-slate-400 w-2.5">3</span>
+<img alt="Tenzin Norbu" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb5KwRDh7XfV3jQj4a1tMoXznukhiUAKvHULi6MYTfrBCvE1AVofB4GxalQtL8Ayc031H3rUU8fccbDngqxS0m9Hk7fGs7XY4w-f0O4j8LjT5e5ghOezHJ65t3NnH3PTwS7Ace1IRSlzGLepYfRr2AKWVMMBy58JmfgzMPPInf1LDUIcfAZK_pmGm2KfYlwkTGQ3lnyeMObKumw1t7hzkGkwvDqa18qFwzgONxQZJDgUSTnSDmG7L2"/>
+<div>
+<h4 class="text-xs font-bold text-slate-800 leading-none">Tenzin Norbu</h4>
+<p class="text-[10px] text-slate-400 mt-0.5">9 trips • 2.8K likes</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-medium rounded-lg border border-slate-200 transition-colors">
+                Follow
+              </button>
+</li>
+<!-- Traveler 4 -->
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold text-slate-400 w-2.5">4</span>
+<img alt="Sneha Iyer" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoEEabScc3i4kQnIdTPyS2LrZUDKTzsIlH1la-J2E91AzoB0b1JY3oWBD5F0mdMRRyy6jUOKN8JafqvhUuPuDh6GieHL4g2leyKCrEXGhcZbt2Bt_up_ZcmAGW3dc-CZz4w_fNrWNDMP19_dgTf0Ut61CNheFvOH4mdgIJJJxRsnq7DejWzdqjRFs4-Ml84dqE0b3okFTBrPvRBqaloqjo3ZyzcYfdJIfQFC4_0uXM3QN2MQB8UY9B"/>
+<div>
+<h4 class="text-xs font-bold text-slate-800 leading-none">Sneha Iyer</h4>
+<p class="text-[10px] text-slate-400 mt-0.5">8 trips • 2.4K likes</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-medium rounded-lg border border-slate-200 transition-colors">
+                Follow
+              </button>
+</li>
+<!-- Traveler 5 -->
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xs font-bold text-slate-400 w-2.5">5</span>
+<img alt="Karan Malhotra" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGBj0mRgq_UTjUNNb-F7V37E-CAckkzYK8ObIxovGKrf6fcTlNFzdcwzy0htlqMv6PVyWEToff90W85xKAT6pQxIG4hyvZEkiLfPnP7L_GOZh7vHlUrG9yOKTGiahzXdbRlcAeLVQhektinebM7wQEApXTJjOjlU0yNeKZSB1YRXXc9k4kr43ZmQRtHVPHu3cFLrI3zd6qp4F9sEkpop02AprA718GahfCXtmcUS4AFAP0FWlOfUev"/>
+<div>
+<h4 class="text-xs font-bold text-slate-800 leading-none">Karan Malhotra</h4>
+<p class="text-[10px] text-slate-400 mt-0.5">7 trips • 2.1K likes</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-medium rounded-lg border border-slate-200 transition-colors">
+                Follow
+              </button>
+</li>
+</ol>
+</section>
+</aside>
+<!-- END: RightRailWidgets -->
+</main>
+</div>
+</body></html>

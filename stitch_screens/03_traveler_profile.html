@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlobeTrotter - Profile</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Caveat for handwritten annotations -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            handwriting: ['"Caveat"', 'cursive'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf9',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#0e4a45',
+              dark: '#0e3b38'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars-and-enhancements">
+    body {
+      background-color: #f7f9fa;
+      color: #1e293b;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 antialiased min-h-screen flex">
+<!-- BEGIN: Left Sidebar Navigation -->
+<aside class="w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 fixed inset-y-0 left-0 z-30 px-4 py-5 overflow-y-auto">
+<!-- Top Brand & Main Navigation -->
+<div>
+<!-- Brand Logo -->
+<div class="flex items-center gap-2.5 px-3 mb-8">
+<div class="w-8 h-8 rounded-lg bg-teal-800 flex items-center justify-center text-white shadow-sm shadow-teal-900/20">
+<!-- Origami / Globe Bird Icon shape -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2L2 19.5h20L12 2zm0 3.84L18.46 17.5H5.54L12 5.84z"></path>
+</svg>
+</div>
+<div>
+<span class="text-lg font-bold text-slate-900 tracking-tight block leading-tight">GlobeTrotter</span>
+<span class="text-[10px] text-slate-400 font-medium tracking-wide">Plan together. Go further.</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="space-y-1 font-medium text-sm text-slate-600">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-500" data-lucide="home"></i>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-500" data-lucide="map"></i>
+<span>My Trips</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-500" data-lucide="calendar"></i>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-500" data-lucide="wallet"></i>
+<span>Budget</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-500" data-lucide="users"></i>
+<span>Community</span>
+</a>
+<!-- Active Tab: Profile -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-teal-50 text-teal-800 font-semibold shadow-sm shadow-teal-700/5" href="#">
+<i class="w-4 h-4 text-teal-700" data-lucide="user"></i>
+<span>Profile</span>
+</a>
+</nav>
+</div>
+<!-- Middle/Bottom Card & Secondary Navigation -->
+<div class="pt-6 space-y-6">
+<!-- Illustrative Motivational Card -->
+<div class="relative rounded-2xl overflow-hidden shadow-sm aspect-[4/5] flex flex-col justify-between p-4 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUUSMpz2dpUihBBHZA5IMldvdhXbXdCOMbN3yhJPSiBVTCpwMNh_C-N8gGBpeEDacsb_uBMhmGjkLCVE3LDqoGhi5sIw7DHN15_fADl937jp_lIegPh3mr16bCxV4SHn5aQWJEEP_HEoGR6MC7PZGW60YzhyZNgkuh5hg08SMBSeoilQcCFOktYgOUWfuM7UPm36R85PswHwRzwtZKIY1MoA2XPTWrTe899pmn2PJyu90ivnTjYKRm');">
+<!-- Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+<div class="relative z-10">
+<p class="font-handwriting text-2xl text-white leading-tight drop-shadow">
+            Good<br/>plans lead<br/>to great<br/>stories.
+          </p>
+</div>
+</div>
+<!-- Settings & Help -->
+<div class="space-y-1 font-medium text-sm text-slate-600 border-t border-slate-100 pt-4">
+<a class="flex items-center gap-3 px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="settings"></i>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2 rounded-xl hover:bg-slate-50 transition-colors" href="#">
+<i class="w-4 h-4 text-slate-400" data-lucide="help-circle"></i>
+<span>Help</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- END: Left Sidebar Navigation -->
+<!-- BEGIN: Main Page Content Area -->
+<div class="flex-1 pl-64 flex flex-col min-w-0">
+<!-- BEGIN: Top Header Bar -->
+<header class="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20">
+<!-- Search Input -->
+<div class="relative w-full max-w-xl">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+<i class="w-4 h-4" data-lucide="search"></i>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200/90 rounded-full text-xs placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-700/20 focus:border-teal-700 transition" placeholder="Search trips, destinations, or travelers..." type="text"/>
+</div>
+<!-- Right Header Actions: Notification Bell + User Avatar -->
+<div class="flex items-center gap-5 ml-4 shrink-0">
+<button class="relative p-2 text-slate-500 hover:text-slate-700 rounded-full hover:bg-slate-50 transition-colors" type="button">
+<i class="w-5 h-5" data-lucide="bell"></i>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer pl-2">
+<img alt="Jeel Patel" class="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0I8qnFRTJQ5Oio-uCyqPZoXOH3XGzXDPFe8WGpUOOhtMGKb-1XeqqyPXhsq5NLfWyWABJuzMuMeGXTea_29VFwHl5SVinreys-GQkHGkkxdONZmS_CbLzYccam5O1zX_w3VLUHfVmgBz0Q47p3F2n7LDqzv1ceVGymzh3QNspRkr2Y8Vq7lDxs9lpIynAGid2VZRy704JCpGzR6VRlPg5GopMC1vEUhtrZ5bfRNCVZxNX15JurJPB"/>
+<div class="text-left leading-tight hidden sm:block">
+<span class="text-xs font-bold text-slate-900 block">Jeel Patel</span>
+<span class="text-[11px] text-slate-400 font-medium">@jeel</span>
+</div>
+<i class="w-4 h-4 text-slate-400 ml-0.5" data-lucide="chevron-down"></i>
+</div>
+</div>
+</header>
+<!-- END: Top Header Bar -->
+<!-- BEGIN: Main Scrollable Content Container -->
+<main class="p-8 space-y-6">
+<!-- BEGIN: Hero Profile Section -->
+<section class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden" data-purpose="profile-hero">
+<!-- Panoramic Mountain Cover Banner -->
+<div class="relative h-60 w-full overflow-hidden bg-slate-100">
+<img alt="Alpine Landscape Banner" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQNUsVuijNcwc92ef94lm7CPZoWi1sD5wvWAtQG9t5glswvfV6PXckoXVjsDf4_A4coeDKhxl9Q-3RorbhCIQpGxT_HIFcximWczLCafFnezHDtmmQ4rvOG_AWAFJsTGaA_umcgAWpVqFjdV2Q1sxhWucoA84o-A1inG_yT4mtPAcpke_4XEnALtuP94kknU8r_jXWujB6Yn7u5emlHz5csu6vhSEM7vht9yxv40nbZKinTvtiECvE"/>
+<!-- Handwritten Annotation Over Mountain Banner -->
+<div class="absolute top-6 right-20 flex items-center gap-2 rotate-[-4deg] drop-shadow-sm select-none">
+<svg class="w-9 h-9 text-slate-800 -rotate-12" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span class="font-handwriting text-2xl font-bold text-slate-900 leading-tight">
+              Same<br/>places,<br/>new you.
+            </span>
+</div>
+</div>
+<!-- Hero Information Bar (Avatar, Bio, Stats, and Inspirational Quote) -->
+<div class="px-8 pb-8 pt-4">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 -mt-20">
+<!-- Left: Avatar and User Credentials -->
+<div class="flex flex-col sm:flex-row items-start sm:items-end gap-6 z-10">
+<!-- Avatar with Camera Action Button -->
+<div class="relative group">
+<img alt="Jeel Patel" class="w-36 h-36 rounded-full object-cover ring-4 ring-white shadow-xl bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBphx-pCDNowPgicEKbvQ5t4RPCZoKiLDRNLB6TBZCExSBOFHvSq7h62lFFzFehxNljmzvyumsCpkwyzX3quA4nBvClp-EaeJ6TDPbHMU54Pfe8tvUIEcLUTpAkccsTRu1zQm-0SZDMDTh7M9A-NrTJcz2493Ju3ncawIXSconGzC-QTdrNSGpxldiG2ldJSHbrGQvFtJAhFtsOkxXGYMNHRtg4f8z9J7QRzKDzvVjwtEtjfSlEYpOS"/>
+<button class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-slate-900/90 text-white flex items-center justify-center hover:bg-slate-950 transition-all shadow-md" type="button">
+<i class="w-4 h-4" data-lucide="camera"></i>
+</button>
+</div>
+<!-- Name & Details -->
+<div class="space-y-1.5 pb-1">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Jeel Patel</h1>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 hover:bg-slate-200/80 text-slate-700 text-xs font-semibold rounded-full transition-colors" type="button">
+<i class="w-3 h-3" data-lucide="edit-3"></i>
+<span>Edit Profile</span>
+</button>
+</div>
+<div class="text-xs text-slate-400 font-medium">@jeel</div>
+<p class="text-xs text-slate-600 font-medium pt-0.5">Student • Builder • Explorer</p>
+<p class="text-xs text-slate-500 max-w-xl leading-relaxed">
+                  Exploring new places, learning new cultures and collecting stories along the way. Travel, tech and good food.
+                </p>
+<div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-1">
+<span class="flex items-center gap-1">
+<i class="w-3.5 h-3.5 text-slate-400" data-lucide="map-pin"></i>
+                    Ahmedabad, India
+                  </span>
+<span class="flex items-center gap-1">
+<i class="w-3.5 h-3.5 text-slate-400" data-lucide="calendar"></i>
+                    Joined Jan 2025
+                  </span>
+</div>
+</div>
+</div>
+<!-- Right: Stats Counters & Pine Trees Quote Badge -->
+<div class="flex flex-col sm:flex-row items-stretch lg:items-end gap-3 self-end w-full lg:w-auto">
+<!-- Counters Box -->
+<div class="bg-slate-50 border border-slate-200/70 rounded-2xl px-5 py-3 flex items-center justify-between gap-6 shadow-xs">
+<div class="text-center px-1">
+<span class="block text-xl font-bold text-slate-900 leading-none">5</span>
+<span class="text-[11px] text-slate-500 font-medium">Trips</span>
+</div>
+<div class="w-px h-7 bg-slate-200"></div>
+<div class="text-center px-1">
+<span class="block text-xl font-bold text-slate-900 leading-none">12</span>
+<span class="text-[11px] text-slate-500 font-medium">Countries</span>
+</div>
+<div class="w-px h-7 bg-slate-200"></div>
+<div class="text-center px-1">
+<span class="block text-xl font-bold text-slate-900 leading-none">18</span>
+<span class="text-[11px] text-slate-500 font-medium">Followers</span>
+</div>
+<div class="w-px h-7 bg-slate-200"></div>
+<div class="text-center px-1">
+<span class="block text-xl font-bold text-slate-900 leading-none">24</span>
+<span class="text-[11px] text-slate-500 font-medium">Following</span>
+</div>
+</div>
+<!-- Quote Card With Tree Illustration Graphic -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-50/70 to-teal-50 border border-teal-100 p-3.5 flex items-center min-w-[210px] min-h-[70px]">
+<p class="font-handwriting text-slate-800 text-base font-semibold leading-snug pr-12 relative z-10">
+                  “Travel far enough, you meet yourself.”
+                </p>
+<div class="absolute -right-2 -bottom-2 w-20 h-20 opacity-80 pointer-events-none">
+<svg class="w-full h-full text-teal-800/80 fill-current" viewbox="0 0 100 100">
+<!-- Stylized evergreen pine silhouettes -->
+<polygon points="50,15 65,45 55,45 70,75 30,75 45,45 35,45"></polygon>
+<polygon points="75,35 87,58 80,58 92,82 58,82 70,58 63,58"></polygon>
+<polygon points="25,40 37,60 30,60 42,85 8,85 20,60 13,60"></polygon>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Hero Profile Section -->
+<!-- BEGIN: Content Tabs -->
+<div class="flex items-center gap-2 border-b border-slate-200 text-sm font-semibold pb-1">
+<!-- Active Tab: My Trips -->
+<button class="flex items-center gap-2 px-4 py-2.5 text-teal-800 border-b-2 border-teal-800 -mb-[1px]" type="button">
+<i class="w-4 h-4 text-teal-700" data-lucide="map-pin"></i>
+<span>My Trips</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 text-slate-500 hover:text-slate-800 transition-colors" type="button">
+<i class="w-4 h-4 text-slate-400" data-lucide="bookmark"></i>
+<span>Saved</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 text-slate-500 hover:text-slate-800 transition-colors" type="button">
+<i class="w-4 h-4 text-slate-400" data-lucide="heart"></i>
+<span>Liked</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 text-slate-500 hover:text-slate-800 transition-colors" type="button">
+<i class="w-4 h-4 text-slate-400" data-lucide="image"></i>
+<span>Photos</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 text-slate-500 hover:text-slate-800 transition-colors" type="button">
+<i class="w-4 h-4 text-slate-400" data-lucide="settings"></i>
+<span>Settings</span>
+</button>
+</div>
+<!-- END: Content Tabs -->
+<!-- BEGIN: Two-Column Main Content & Side Info Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- BEGIN: Left/Main 2 Columns: Trips Grid -->
+<div class="xl:col-span-2 space-y-4">
+<!-- Trips Section Header -->
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900 tracking-tight">My Trips</h2>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-teal-800 hover:bg-teal-900 text-white rounded-xl text-xs font-semibold shadow-sm shadow-teal-900/10 transition-all" type="button">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+<span>Create Trip</span>
+</button>
+</div>
+<!-- 3x2 Grid of Trip Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1: Japan 2026 -->
+<div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-32 w-full overflow-hidden">
+<img alt="Japan Pagoda &amp; Cherry Blossoms" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiXmtaKAnEvz1ZYxm1bMIswdrJOT5aU15D9T6Bp3AMk5b9bewJdEzeEQKa771SXwcxnTlSU802YSx5CqU1X8I1mHrWjO9mpX3sN0tlu8N0_CAye1w9cue-2END3nspvnFxfoj-uzTFHkgVacSyPivYZz9ycC6SHOmUExUn3RjJEAnl7sOetuTi94q56M1WbmGbLjHgSCtf7FReVY2DrbECjQVFwzB-9rqJzYQMZsOZt8ZYR_LbJjR-"/>
+<!-- Current Badge -->
+<span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100/90 text-emerald-800 backdrop-blur-xs">
+                    Current
+                  </span>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-sm text-slate-900">Japan 2026</h3>
+<button class="text-slate-400 hover:text-slate-600"><i class="w-4 h-4" data-lucide="more-horizontal"></i></button>
+</div>
+<p class="text-[11px] text-slate-500 font-medium mt-0.5">Mar 12 – Mar 20, 2026</p>
+<p class="text-[11px] text-slate-500 flex items-center gap-1 mt-2">
+<i class="w-3 h-3 text-slate-400" data-lucide="map-pin"></i>
+                    4 cities
+                  </p>
+</div>
+</div>
+<div class="px-3.5 pb-3 pt-1">
+<div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-1">
+<span></span>
+<span>72%</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-700 h-1.5 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Italy Escape -->
+<div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-32 w-full overflow-hidden">
+<img alt="Amalfi Coast Italy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbTP0U5uvD67NFmvSocAz_LD0lZYkHRB6jLjkGvGzIX_Ct8vOMWgnlyK4d1vXDKBQ814ig8ut-IrGQzYxtidOLdsmhvMWFl6hfTEXFaATFWnhVpFEpOw7sAxbq1CO3drwmShByTwD9HndXzpYzkemAkm_MGO838FxJmOS_MlYrAAoWwtQNhc4wv5W0tpWA5L9k3twpUYsjud2oe3Y8OSwk9UTr6b8yZ75KMgC3WkyL_C01VhzIAq5J"/>
+<!-- Completed Badge -->
+<span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-100/90 text-sky-800 backdrop-blur-xs">
+                    Completed
+                  </span>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-sm text-slate-900">Italy Escape</h3>
+<button class="text-slate-400 hover:text-slate-600"><i class="w-4 h-4" data-lucide="more-horizontal"></i></button>
+</div>
+<p class="text-[11px] text-slate-500 font-medium mt-0.5">Jun 5 – Jun 12, 2025</p>
+<p class="text-[11px] text-slate-500 flex items-center gap-1 mt-2">
+<i class="w-3 h-3 text-slate-400" data-lucide="map-pin"></i>
+                    3 cities
+                  </p>
+</div>
+</div>
+<div class="px-3.5 pb-3 pt-1">
+<div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-1">
+<span></span>
+<span>100%</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-700 h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Swiss Alps Adventure -->
+<div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-32 w-full overflow-hidden">
+<img alt="Swiss Alps Alpine Lake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdTIIPJ2RvGMd3OAfaowgjKWOcYoEul_L5yiqhOI2_Fzg3UNMW3GU4G98UqmfCKTXBOR20yrwpJy8QLd75VS-VGD1azOIojhtAHsa_C1wqeA6aaMdO81Imn227p9XC1PeX7Nr2XeygxO84XqsIdembvKdeskYPcdgnn7MZmSzUdHj6U2NwsW4Nk_gtub6ETYO-EdYM6I12ankiEwVulJgUwwYp-i7K9p3q2Bl1TACsDyGDN25sYlNX"/>
+<!-- Draft Badge -->
+<span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-200/90 text-slate-700 backdrop-blur-xs">
+                    Draft
+                  </span>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-sm text-slate-900">Swiss Alps Adventure</h3>
+<button class="text-slate-400 hover:text-slate-600"><i class="w-4 h-4" data-lucide="more-horizontal"></i></button>
+</div>
+<p class="text-[11px] text-slate-500 font-medium mt-0.5">Aug 10 – Aug 18, 2026</p>
+<p class="text-[11px] text-slate-500 flex items-center gap-1 mt-2">
+<i class="w-3 h-3 text-slate-400" data-lucide="map-pin"></i>
+                    5 cities
+                  </p>
+</div>
+</div>
+<div class="px-3.5 pb-3 pt-1">
+<div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-1">
+<span></span>
+<span>40%</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-700 h-1.5 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Bali Getaway -->
+<div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-32 w-full overflow-hidden">
+<img alt="Bali Tropical Beach" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6v6Y451o3zRfkNjU3P8jBYFiufLR5HE9Cg-e7U9S6eMYKKxwnqtESvU5NG_VB55PHSAQZcBpR3AKbX3y2gxc65NPTp3FIJD-wsBnPPo-wzKxCoR-yndssCfcX3wkDh5H-WY9aw_34gXu7Bf5jvmsvLtUPuNxlPMO2XSga1j4zWJXC34UZUSrGr6p4x8WC4KmYUf4OfaFmAab78ebNA0q-2pQSKY0MlDD-O8kpswPKjj3P7YaQyLQ7"/>
+<!-- Completed Badge -->
+<span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-100/90 text-sky-800 backdrop-blur-xs">
+                    Completed
+                  </span>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-sm text-slate-900">Bali Getaway</h3>
+<button class="text-slate-400 hover:text-slate-600"><i class="w-4 h-4" data-lucide="more-horizontal"></i></button>
+</div>
+<p class="text-[11px] text-slate-500 font-medium mt-0.5">Dec 1 – Dec 8, 2025</p>
+<p class="text-[11px] text-slate-500 flex items-center gap-1 mt-2">
+<i class="w-3 h-3 text-slate-400" data-lucide="map-pin"></i>
+                    3 cities
+                  </p>
+</div>
+</div>
+<div class="px-3.5 pb-3 pt-1">
+<div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-1">
+<span></span>
+<span>100%</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-700 h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Card 5: Spain Explorer -->
+<div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-32 w-full overflow-hidden">
+<img alt="Sagrada Familia Spain" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU7A-ajF2YuMyHMlQ0B_qtZ46EPMFF9GJoOtPHsmgDF7vy5A5GENcJ6tNrPpx4lmfFqEvCyC6nW_xYeB4_H8fbKtFjHV0bLcYdr60zI8-_S9pF_GsuNZqOhcGjPW6zGN3f8ygoiokfr5cKSi_hYK0HbfJeLALl1-w7BOAnBHFt1-25ANrqs5V2PsMrMpqzA7w9AiqyorQO5IeJGJdLWzNscg0optFcYe4QcK0aW85E_qaRbO8jQpU0"/>
+<!-- Draft Badge -->
+<span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-200/90 text-slate-700 backdrop-blur-xs">
+                    Draft
+                  </span>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-sm text-slate-900">Spain Explorer</h3>
+<button class="text-slate-400 hover:text-slate-600"><i class="w-4 h-4" data-lucide="more-horizontal"></i></button>
+</div>
+<p class="text-[11px] text-slate-500 font-medium mt-0.5">TBD</p>
+<p class="text-[11px] text-slate-500 flex items-center gap-1 mt-2">
+<i class="w-3 h-3 text-slate-400" data-lucide="map-pin"></i>
+                    2 cities
+                  </p>
+</div>
+</div>
+<div class="px-3.5 pb-3 pt-1">
+<div class="flex items-center justify-between text-[10px] text-slate-500 font-semibold mb-1">
+<span></span>
+<span>20%</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-700 h-1.5 rounded-full" style="width: 20%"></div>
+</div>
+</div>
+</div>
+<!-- Card 6: Plan Your Next Adventure (Empty placeholder state) -->
+<div class="bg-slate-50/70 border-2 border-dashed border-slate-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center hover:border-teal-700/40 hover:bg-teal-50/30 transition-all">
+<div class="w-11 h-11 rounded-full bg-teal-100 flex items-center justify-center text-teal-800 mb-3 shadow-xs">
+<i class="w-5 h-5" data-lucide="plus"></i>
+</div>
+<h4 class="font-bold text-sm text-slate-800">Plan Your Next Adventure</h4>
+<p class="text-[11px] text-slate-400 font-medium mt-1 mb-4">New places are waiting.</p>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-teal-100/80 hover:bg-teal-200/80 text-teal-900 text-xs font-semibold rounded-lg transition-colors" type="button">
+<i class="w-3.5 h-3.5" data-lucide="plus"></i>
+<span>Create a Trip</span>
+</button>
+</div>
+</div>
+</div>
+<!-- END: Trips Grid -->
+<!-- BEGIN: Right Sidebar Information Cards -->
+<div class="space-y-6">
+<!-- Card 1: About Me -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-sm text-slate-900">About Me</h3>
+<button class="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-slate-600" type="button">
+<i class="w-3 h-3" data-lucide="edit-2"></i>
+<span>Edit</span>
+</button>
+</div>
+<!-- Items list -->
+<div class="space-y-2.5 text-xs text-slate-600">
+<div class="flex items-center gap-2.5">
+<i class="w-4 h-4 text-slate-400 shrink-0" data-lucide="graduation-cap"></i>
+<span>B.Sc. IT Student</span>
+</div>
+<div class="flex items-center gap-2.5">
+<i class="w-4 h-4 text-slate-400 shrink-0" data-lucide="compass"></i>
+<span>Love exploring new places</span>
+</div>
+<div class="flex items-center gap-2.5">
+<i class="w-4 h-4 text-slate-400 shrink-0" data-lucide="heart"></i>
+<span>Food, nature, culture, and good people</span>
+</div>
+<div class="flex items-center gap-2.5">
+<i class="w-4 h-4 text-slate-400 shrink-0" data-lucide="globe"></i>
+<span>Open to travel collaborations</span>
+</div>
+</div>
+<!-- Mini Quote Card with Botanical Illustration -->
+<div class="mt-4 rounded-xl bg-slate-50 border border-slate-100 p-3 flex items-center justify-between relative overflow-hidden">
+<p class="text-xs text-slate-600 italic font-medium leading-relaxed z-10">
+                Collect moments,<br/>not things.”
+              </p>
+<!-- Small plant silhouette -->
+<div class="w-12 h-12 text-teal-800/70 shrink-0">
+<svg fill="currentColor" viewbox="0 0 48 48">
+<path d="M24 44V28M24 28C24 20 16 16 10 17c0 8 5 15 14 15zm0 0c0-8 8-12 14-11 0 8-5 15-14 15z"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Card 2: Interests -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-sm text-slate-900">Interests</h3>
+<button class="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-slate-600" type="button">
+<i class="w-3 h-3" data-lucide="edit-2"></i>
+<span>Edit</span>
+</button>
+</div>
+<!-- Colorful Badge Pills with specific icons -->
+<div class="flex flex-wrap gap-2 text-xs font-semibold">
+<!-- Nature -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-100">
+<i class="w-3.5 h-3.5 text-emerald-700" data-lucide="trees"></i>
+                Nature
+              </span>
+<!-- Food -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-50 text-rose-800 rounded-xl border border-rose-100">
+<i class="w-3.5 h-3.5 text-rose-700" data-lucide="utensils"></i>
+                Food
+              </span>
+<!-- Culture -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-800 rounded-xl border border-purple-100">
+<i class="w-3.5 h-3.5 text-purple-700" data-lucide="landmark"></i>
+                Culture
+              </span>
+<!-- Photography -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl">
+<i class="w-3.5 h-3.5 text-slate-600" data-lucide="camera"></i>
+                Photography
+              </span>
+<!-- Adventure -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-800 rounded-xl border border-amber-100">
+<i class="w-3.5 h-3.5 text-amber-700" data-lucide="mountain-snow"></i>
+                Adventure
+              </span>
+<!-- Tech & AI -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-50 text-sky-800 rounded-xl border border-sky-100">
+<i class="w-3.5 h-3.5 text-sky-700" data-lucide="cpu"></i>
+                Tech &amp; AI
+              </span>
+</div>
+</div>
+<!-- Card 3: Download My Data -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+<h3 class="font-bold text-sm text-slate-900">Download My Data</h3>
+<p class="text-xs text-slate-500 mt-1 mb-4">Export your trips, notes and profile data.</p>
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-teal-50 hover:bg-teal-100/70 text-teal-900 text-xs font-semibold rounded-xl transition-colors border border-teal-100" type="button">
+<i class="w-4 h-4 text-teal-700" data-lucide="download"></i>
+<span>Download Data (ZIP)</span>
+</button>
+</div>
+</div>
+<!-- END: Right Sidebar Information Cards -->
+</div>
+<!-- END: Two-Column Main Content & Side Info Grid -->
+</main>
+<!-- END: Main Scrollable Content Container -->
+</div>
+<!-- END: Main Page Content Area -->
+<!-- BEGIN: Script for Lucide Icons Initialization -->
+<script data-purpose="icons-initializer">
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+<!-- END: Script for Lucide Icons Initialization -->
+</body></html>
