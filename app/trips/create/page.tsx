@@ -24,6 +24,7 @@ import {
 import { AppShell } from '@/components/layout/app-shell';
 import { Button } from '@/components/ui/button';
 import { AIItineraryResult } from '@/types/database';
+import { parseTripPrompt } from '@/lib/ai/prompt-parser';
 
 interface TemplateOption {
   id: string;
@@ -107,18 +108,29 @@ interface SavePartialResult {
 function AITripCreatorContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const rawDestination = searchParams.get('destination');
+  const rawPrompt = searchParams.get('prompt') || '';
 
-  const initialDestination = searchParams.get('destination') || 'Tokyo, Japan';
-  const initialPrompt = searchParams.get('prompt') || '';
+  // Parse prompt if provided (e.g. "7 days in bali in 70k")
+  const parsed = useMemo(() => {
+    if (rawPrompt) {
+      return parseTripPrompt(rawPrompt);
+    }
+    return null;
+  }, [rawPrompt]);
+
+  const initialDestination = rawDestination || parsed?.destination || 'Tokyo, Japan';
+  const initialDays = parsed?.days || 7;
+  const initialBudget = parsed?.budget || 80000;
 
   // Form State (User-Controlled Inputs)
   const [destination, setDestination] = useState(initialDestination);
-  const [title, setTitle] = useState(initialDestination ? `Trip to ${initialDestination}` : '');
+  const [title, setTitle] = useState(`Trip to ${initialDestination}`);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [days, setDays] = useState(7);
-  const [budget, setBudget] = useState(80000);
-  const [prompt, setPrompt] = useState(initialPrompt);
+  const [days, setDays] = useState(initialDays);
+  const [budget, setBudget] = useState(initialBudget);
+  const [prompt, setPrompt] = useState(rawPrompt);
 
   // Generator & Persistence State
   const [isGenerating, setIsGenerating] = useState(false);
@@ -187,49 +199,56 @@ function AITripCreatorContent() {
     setGenerationError(null);
   };
 
-  const handleGenerate = useCallback(async () => {
-    if (!destination.trim()) {
-      setValidationError('Destination is required to generate itinerary suggestions.');
-      return;
-    }
+  const handleGenerate = useCallback(
+    async (overrideParams?: { targetDest?: string; targetDays?: number; targetBudget?: number }) => {
+      const destToUse = (overrideParams?.targetDest ?? destination).trim();
+      const daysToUse = overrideParams?.targetDays ?? days;
+      const budgetToUse = overrideParams?.targetBudget ?? budget;
 
-    setValidationError(null);
-    setGenerationError(null);
-    setIsGenerating(true);
-    setGeneratedResult(null);
-    setSaveError(null);
-    setPartialSaveInfo(null);
-
-    try {
-      const res = await fetch('/api/ai/generate-itinerary', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          destination: destination.trim(),
-          days: Math.max(1, Math.min(10, days)),
-          budget: Math.max(0, budget),
-          interests: ['culture', 'nature', 'food'],
-        }),
-      });
-
-      const json = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        throw new Error(json.error || `Generation failed (${res.status})`);
+      if (!destToUse) {
+        setValidationError('Destination is required to generate itinerary suggestions.');
+        return;
       }
 
-      if (json.data) {
-        setGeneratedResult(json.data);
-      } else {
-        throw new Error('Received invalid itinerary response from generator');
+      setValidationError(null);
+      setGenerationError(null);
+      setIsGenerating(true);
+      setGeneratedResult(null);
+      setSaveError(null);
+      setPartialSaveInfo(null);
+
+      try {
+        const res = await fetch('/api/ai/generate-itinerary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            destination: destToUse,
+            days: Math.max(1, Math.min(10, daysToUse)),
+            budget: Math.max(0, budgetToUse),
+            interests: ['culture', 'nature', 'food'],
+          }),
+        });
+
+        const json = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          throw new Error(json.error || `Generation failed (${res.status})`);
+        }
+
+        if (json.data) {
+          setGeneratedResult(json.data);
+        } else {
+          throw new Error('Received invalid itinerary response from generator');
+        }
+      } catch (e: any) {
+        console.error('Generation failed:', e);
+        setGenerationError(e.message || 'Unable to generate itinerary suggestions. Please try again.');
+      } finally {
+        setIsGenerating(false);
       }
-    } catch (e: any) {
-      console.error('Generation failed:', e);
-      setGenerationError(e.message || 'Unable to generate itinerary suggestions. Please try again.');
-    } finally {
-      setIsGenerating(false);
-    }
-  }, [destination, days, budget]);
+    },
+    [destination, days, budget]
+  );
 
   // Auto-generate if prompted from query params on first load
   useEffect(() => {
@@ -237,7 +256,21 @@ function AITripCreatorContent() {
     const qDest = searchParams.get('destination');
     if ((qPrompt || qDest) && !hasAutoGeneratedRef.current) {
       hasAutoGeneratedRef.current = true;
-      handleGenerate();
+      if (qPrompt) {
+        const p = parseTripPrompt(qPrompt);
+        const finalDest = qDest || p.destination;
+        setDestination(finalDest);
+        setTitle(`Trip to ${finalDest}`);
+        setDays(p.days);
+        setBudget(p.budget);
+        handleGenerate({
+          targetDest: finalDest,
+          targetDays: p.days,
+          targetBudget: p.budget,
+        });
+      } else if (qDest) {
+        handleGenerate({ targetDest: qDest });
+      }
     }
   }, [searchParams, handleGenerate]);
 
@@ -530,7 +563,7 @@ function AITripCreatorContent() {
             </div>
             <Button
               size="sm"
-              onClick={handleGenerate}
+              onClick={() => handleGenerate()}
               className="rounded-full bg-red-600 hover:bg-red-700 text-white text-xs px-3 h-8 shrink-0 flex items-center gap-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -663,7 +696,7 @@ function AITripCreatorContent() {
           </div>
 
           <Button
-            onClick={handleGenerate}
+            onClick={() => handleGenerate()}
             disabled={isGenerating || isSaving}
             className="w-full h-12 rounded-2xl bg-[#2563EB] hover:bg-blue-700 text-white font-bold text-sm shadow-md gap-2"
           >

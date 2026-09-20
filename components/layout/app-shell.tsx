@@ -52,11 +52,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   // Copilot Chat State
   const [copilotMessages, setCopilotMessages] = useState<
-    Array<{ role: 'user' | 'assistant'; text: string }>
+    Array<{ role: 'user' | 'assistant'; text: string; destination?: string }>
   >([
     {
       role: 'assistant',
-      text: "Hello! I'm your GlobeTrotter AI Copilot. Where are you dreaming of traveling next? Ask me to build an itinerary, estimate a budget, or find hidden local spots.",
+      text: "Hello! I'm your GlobeTrotter AI Copilot. Where are you dreaming of traveling next? Ask me about destinations, local hidden gems, budgets, or building an itinerary.",
     },
   ]);
   const [copilotInput, setCopilotInput] = useState('');
@@ -66,31 +66,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     if (!copilotInput.trim() || isAiGenerating) return;
     const userMsg = copilotInput.trim();
     setCopilotInput('');
-    setCopilotMessages((prev) => [...prev, { role: 'user', text: userMsg }]);
+    const newHistory = [...copilotMessages, { role: 'user' as const, text: userMsg }];
+    setCopilotMessages(newHistory);
     setIsAiGenerating(true);
 
     try {
-      // Call our live AI API endpoint
-      const res = await fetch('/api/ai/generate-itinerary', {
+      const res = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ destination: userMsg, days: 4, budget: 35000 }),
+        body: JSON.stringify({
+          messages: newHistory.map((m) => ({ role: m.role, content: m.text })),
+        }),
       });
 
       if (res.ok) {
-        const json = await res.json();
-        const days = json.data?.days || [];
-        const fallbackText = json.data?.fallback ? ' (Curated template)' : ' (Live AI)';
-        const planSummary = days
-          .slice(0, 3)
-          .map((d: any) => `• Day ${d.day}: ${d.title} (${d.activities?.length || 0} stops)`)
-          .join('\n');
-
+        const data = await res.json();
         setCopilotMessages((prev) => [
           ...prev,
           {
             role: 'assistant',
-            text: `Here is a custom plan for "${json.data?.destination}"${fallbackText}:\n\n${planSummary}\n\nWould you like me to open the Itinerary Builder for this trip?`,
+            text: data.reply || 'I am ready to help you plan your journey!',
+            destination: data.suggestedDestination || undefined,
           },
         ]);
       } else {
@@ -98,7 +94,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           ...prev,
           {
             role: 'assistant',
-            text: `I've analyzed your travel prompt for "${userMsg}". I can help you create a personalized multi-city trip with activities, hotels, and live budget tracking!`,
+            text: `I'm happy to help you with ${userMsg}! Ask me about budgets, best times to visit, or local experiences.`,
           },
         ]);
       }
@@ -107,7 +103,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         ...prev,
         {
           role: 'assistant',
-          text: `Great choice! I have recommended flights, stays, and activities for ${userMsg}. Click 'Create Trip' to customize.`,
+          text: `Great choice! I have recommended spots and tips for ${userMsg}. What aspect would you like to know more about?`,
         },
       ]);
     } finally {
@@ -311,7 +307,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Conversation Stream */}
-          <div className="flex-1 p-6 overflow-y-auto space-y-4">
+          <div className="flex-1 p-5 overflow-y-auto space-y-4">
             {copilotMessages.map((msg, idx) => (
               <div
                 key={idx}
@@ -319,20 +315,34 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               >
                 <div
                   className={cn(
-                    'max-w-[85%] rounded-2xl p-4 text-sm leading-relaxed whitespace-pre-wrap',
+                    'max-w-[88%] rounded-2xl p-3.5 text-sm leading-relaxed whitespace-pre-wrap',
                     msg.role === 'user'
-                      ? 'bg-[#2563EB] text-white shadow-sm'
-                      : 'bg-slate-100/80 text-slate-800 border border-slate-200/50'
+                      ? 'bg-[#2563EB] text-white shadow-xs'
+                      : 'bg-slate-100/90 text-slate-800 border border-slate-200/80'
                   )}
                 >
                   {msg.text}
+
+                  {msg.destination && (
+                    <div className="mt-3 pt-2.5 border-t border-slate-200/60 flex items-center gap-2">
+                      <Link
+                        href={`/trips/create?destination=${encodeURIComponent(msg.destination)}&prompt=${encodeURIComponent(`Trip to ${msg.destination}`)}`}
+                        onClick={() => setIsCopilotOpen(false)}
+                      >
+                        <Button size="sm" className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs h-8 px-3 gap-1.5 shadow-xs font-semibold">
+                          <Sparkles className="w-3 h-3" />
+                          <span>Plan Trip to {msg.destination} →</span>
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
             {isAiGenerating && (
-              <div className="flex items-center gap-2 text-xs text-slate-400 p-3 bg-slate-50 rounded-2xl w-fit">
+              <div className="flex items-center gap-2 text-xs text-slate-500 p-3 bg-slate-50 border border-slate-200/60 rounded-2xl w-fit">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-spin" />
-                <span>Generating intelligent itinerary...</span>
+                <span>Copilot is thinking...</span>
               </div>
             )}
           </div>

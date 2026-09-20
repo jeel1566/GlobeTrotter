@@ -8,36 +8,36 @@ const DAILY_AI_CAP = 15;
 export async function POST(req: NextRequest) {
   try {
     const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized', code: 'UNAUTHORIZED' }, { status: 401 });
-    }
 
-    // Check daily cap
-    const today = new Date().toISOString().split('T')[0];
-    const resetDate = user.ai_generations_reset_at
-      ? new Date(user.ai_generations_reset_at).toISOString().split('T')[0]
-      : today;
+    // If user is authenticated, check daily cap
+    let generationsToday = 0;
+    if (user) {
+      const today = new Date().toISOString().split('T')[0];
+      const resetDate = user.ai_generations_reset_at
+        ? new Date(user.ai_generations_reset_at).toISOString().split('T')[0]
+        : today;
 
-    let generationsToday = user.ai_generations_today || 0;
-    if (resetDate !== today) {
-      generationsToday = 0;
-      await supabaseServer
-        .from('users')
-        .update({
-          ai_generations_today: 0,
-          ai_generations_reset_at: new Date().toISOString(),
-        })
-        .eq('id', user.id);
-    }
+      generationsToday = user.ai_generations_today || 0;
+      if (resetDate !== today) {
+        generationsToday = 0;
+        await supabaseServer
+          .from('users')
+          .update({
+            ai_generations_today: 0,
+            ai_generations_reset_at: new Date().toISOString(),
+          })
+          .eq('id', user.id);
+      }
 
-    if (generationsToday >= DAILY_AI_CAP) {
-      return NextResponse.json(
-        {
-          error: `Daily AI generation limit (${DAILY_AI_CAP}) reached. Please try again tomorrow.`,
-          code: 'AI_LIMIT_EXCEEDED',
-        },
-        { status: 429 }
-      );
+      if (generationsToday >= DAILY_AI_CAP) {
+        return NextResponse.json(
+          {
+            error: `Daily AI generation limit (${DAILY_AI_CAP}) reached. Please try again tomorrow.`,
+            code: 'AI_LIMIT_EXCEEDED',
+          },
+          { status: 429 }
+        );
+      }
     }
 
     const body = await req.json();
@@ -67,21 +67,23 @@ export async function POST(req: NextRequest) {
       interests: Array.isArray(interests) ? interests : [],
     });
 
-    // Increment user's count & log generation
-    await supabaseServer
-      .from('users')
-      .update({ ai_generations_today: generationsToday + 1 })
-      .eq('id', user.id);
+    // Increment user's count & log generation if authenticated
+    if (user) {
+      await supabaseServer
+        .from('users')
+        .update({ ai_generations_today: generationsToday + 1 })
+        .eq('id', user.id);
 
-    try {
-      await supabaseServer.from('ai_generation_log').insert({
-        user_id: user.id,
-        trip_id: trip_id || null,
-        input_params: { destination, days: safeDays, budget: safeBudget, interests },
-        used_fallback: result.fallback,
-      });
-    } catch (logErr) {
-      // Non-critical logging failure
+      try {
+        await supabaseServer.from('ai_generation_log').insert({
+          user_id: user.id,
+          trip_id: trip_id || null,
+          input_params: { destination, days: safeDays, budget: safeBudget, interests },
+          used_fallback: result.fallback,
+        });
+      } catch (logErr) {
+        // Non-critical logging failure
+      }
     }
 
     return NextResponse.json({ data: result });
