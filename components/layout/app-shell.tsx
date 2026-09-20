@@ -34,12 +34,12 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'My Trips', href: '/trips', icon: Compass },
-  { name: 'Explore & Map', href: '/explore', icon: MapPin },
+  { name: 'Trips', href: '/trips', icon: Compass },
+  { name: 'Explore', href: '/explore', icon: MapPin },
   { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
-  { name: 'Community', href: '/community', icon: Users, badge: 'Hot' },
+  { name: 'Community', href: '/community', icon: Users },
   { name: 'Profile', href: '/profile', icon: User },
-  { name: 'Admin Analytics', href: '/admin', icon: BarChart3 },
+  { name: 'Admin', href: '/admin', icon: BarChart3 },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -240,7 +240,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             className="hidden sm:flex items-center gap-3 px-4 py-2 rounded-xl bg-slate-100/80 hover:bg-slate-100 text-slate-500 text-xs font-medium border border-slate-200/60 w-80 transition-all text-left"
           >
             <Search className="w-3.5 h-3.5 text-slate-400" />
-            <span className="flex-1">Search destinations, trips, places...</span>
+            <span className="flex-1">Search destinations, trips...</span>
             <kbd className="px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono text-slate-400 shadow-xs">
               ⌘K
             </kbd>

@@ -14,6 +14,7 @@ import {
   Lock,
   Globe,
   Compass,
+  Plus,
 } from 'lucide-react';
 import { AppShell } from '@/components/layout/app-shell';
 import { Button } from '@/components/ui/button';
@@ -196,9 +197,10 @@ export default function TripsListingPage() {
           </div>
 
           <Link href="/trips/create">
-            <ButtonInButton variant="primary" size="default">
-              Plan New Trip with AI
-            </ButtonInButton>
+            <Button size="sm" className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-9 px-4 gap-1.5 shadow-xs">
+              <Plus className="w-3.5 h-3.5" />
+              <span>New Trip</span>
+            </Button>
           </Link>
         </div>
 

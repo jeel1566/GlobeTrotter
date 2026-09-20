@@ -41,7 +41,7 @@ const TEMPLATES: TemplateOption[] = [
   {
     id: 'solo',
     title: 'Solo Cultural Quest',
-    desc: 'Historic sites, local museums, and neighborhood walking exploration',
+    desc: 'Historic sites & photography',
     icon: User,
     color: 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400',
     prompt: 'Solo 5-day cultural and photography exploration through Kyoto & Osaka',
@@ -52,7 +52,7 @@ const TEMPLATES: TemplateOption[] = [
   {
     id: 'adventure',
     title: 'High-Altitude Adventure',
-    desc: 'Mountain hikes, river valley outings, and outdoor day activities',
+    desc: 'Trails & mountain outings',
     icon: Flame,
     color: 'bg-orange-50 text-orange-600 dark:bg-orange-950/60 dark:text-orange-400',
     prompt: '6-day outdoor adventure in Manali & Solang Valley with hiking trails',
@@ -63,7 +63,7 @@ const TEMPLATES: TemplateOption[] = [
   {
     id: 'scenic',
     title: 'Scenic Coastal Getaway',
-    desc: 'Scenic viewpoints, seaside dinners, and relaxed coastal exploration',
+    desc: 'Coastal routes & viewpoints',
     icon: Heart,
     color: 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400',
     prompt: '7-day scenic getaway along the Amalfi Coast with coastal walking tours',
@@ -74,7 +74,7 @@ const TEMPLATES: TemplateOption[] = [
   {
     id: 'family',
     title: 'Family Exploration',
-    desc: 'Kid-friendly parks, beach outings, historic forts, and balanced pacing',
+    desc: 'Parks, beaches & relaxed pace',
     icon: Baby,
     color: 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400',
     prompt: 'Family-friendly 5-day trip to Goa with beaches and historic landmarks',
@@ -427,16 +427,16 @@ function AITripCreatorContent() {
       <div className="max-w-5xl mx-auto space-y-8 pb-16">
 
         {/* HEADER */}
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-3 border border-blue-200 dark:border-blue-800">
+        <div className="text-center max-w-xl mx-auto">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-2 border border-blue-200 dark:border-blue-800">
             <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Itinerary Planning Assistant</span>
+            <span>AI Trip Builder</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading tracking-tight">
-            Plan Your Trip Itinerary
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Plan a New Trip
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
-            Provide your destination, dates, and budget or start from a sample template. The AI generates draft daily activity suggestions for you to review and customize before saving.
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Pick a destination or template to draft your daily itinerary.
           </p>
         </div>
 

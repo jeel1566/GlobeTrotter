@@ -945,26 +945,26 @@ export default function ItineraryBuilderPage() {
                   variant="outline"
                   size="sm"
                   onClick={() => setIsOptimizeOpen(true)}
-                  className="rounded-full h-8 px-3 text-xs gap-1.5 border-black/[0.08] dark:border-white/10 hover:bg-teal-50 dark:hover:bg-teal-950/40 text-slate-700 dark:text-slate-200"
+                  className="rounded-xl h-8 px-3 text-xs gap-1.5 border-slate-200 hover:bg-slate-50 text-slate-700"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-teal-600" strokeWidth={1.5} />
-                  <span>Review Order</span>
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Optimize</span>
                 </Button>
 
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => window.print()}
-                  className="rounded-full h-8 px-3 text-xs gap-1.5 border-black/[0.08] dark:border-white/10 text-slate-700 dark:text-slate-200"
+                  className="rounded-xl h-8 px-2.5 text-xs gap-1.5 border-slate-200 text-slate-700 hover:bg-slate-50"
                 >
-                  <Download className="w-3.5 h-3.5 text-slate-500" strokeWidth={1.5} />
+                  <Download className="w-3.5 h-3.5 text-slate-500" />
                   <span>PDF</span>
                 </Button>
 
                 {/* Visibility & Publishing Controls */}
                 {trip?.visibility === 'public' ? (
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                       <Globe className="w-3 h-3" />
                       <span>Public</span>
                     </span>
@@ -972,22 +972,22 @@ export default function ItineraryBuilderPage() {
                     <Button
                       size="sm"
                       onClick={handleCopyPublicUrl}
-                      className="rounded-full h-8 px-3 text-xs gap-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                      className="rounded-xl h-8 px-3 text-xs gap-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-xs"
                       title="Copy publicly shareable link"
                     >
                       {copiedPublicUrl ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
-                      <span>{copiedPublicUrl ? 'Link Copied!' : 'Copy Public Link'}</span>
+                      <span>{copiedPublicUrl ? 'Copied' : 'Share'}</span>
                     </Button>
 
                     <Link href={`/trips/${tripId}/view`} target="_blank">
                       <Button
                         variant="outline"
                         size="sm"
-                        className="rounded-full h-8 px-2.5 text-xs gap-1 border-black/[0.08] dark:border-white/10 text-slate-700 dark:text-slate-200"
+                        className="rounded-xl h-8 px-2.5 text-xs gap-1 border-slate-200 text-slate-700"
                         title="Open public view in new tab"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">View</span>
+                        <span>View</span>
                       </Button>
                     </Link>
 
@@ -996,32 +996,30 @@ export default function ItineraryBuilderPage() {
                       size="sm"
                       disabled={isPublishing}
                       onClick={() => handleToggleVisibility('private')}
-                      className="rounded-full h-8 px-2.5 text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white"
-                      title="Make this trip private"
+                      className="rounded-xl h-8 px-2 text-xs text-slate-500 hover:text-slate-900"
                     >
                       {isPublishing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'Make Private'}
                     </Button>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
                       <Lock className="w-3 h-3" />
-                      <span>Private Draft</span>
+                      <span>Private</span>
                     </span>
 
                     <Button
                       size="sm"
                       disabled={isPublishing}
                       onClick={() => handleToggleVisibility('public')}
-                      className="rounded-full h-8 px-3.5 text-xs gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm"
-                      title="Publish this trip to generate a shareable link"
+                      className="rounded-xl h-8 px-3 text-xs gap-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-xs"
                     >
                       {isPublishing ? (
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
                       ) : (
                         <Globe className="w-3.5 h-3.5" />
                       )}
-                      <span>{isPublishing ? 'Publishing...' : 'Publish Trip'}</span>
+                      <span>{isPublishing ? 'Saving...' : 'Publish'}</span>
                     </Button>
                   </div>
                 )}
@@ -1029,7 +1027,7 @@ export default function ItineraryBuilderPage() {
             </div>
 
             {publishError && (
-              <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-center justify-between text-xs text-red-700 dark:text-red-300">
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 flex items-center justify-between text-xs text-red-700">
                 <div className="flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                   <span>{publishError}</span>
@@ -1038,7 +1036,7 @@ export default function ItineraryBuilderPage() {
                   size="sm"
                   variant="ghost"
                   onClick={() => handleToggleVisibility(trip?.visibility === 'public' ? 'private' : 'public')}
-                  className="h-7 text-xs px-2.5 text-red-700 hover:bg-red-100 dark:hover:bg-red-900/40"
+                  className="h-7 text-xs px-2 text-red-700 hover:bg-red-100"
                 >
                   Retry
                 </Button>
@@ -1048,75 +1046,77 @@ export default function ItineraryBuilderPage() {
             {/* Title & View Switcher */}
             <div className="flex items-end justify-between gap-4 flex-wrap pb-1">
               <div>
-                <h1 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                <h1 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">
                   {trip?.title || 'Trip Itinerary'}
                 </h1>
-                <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mt-1 flex-wrap font-medium">
-                  <span className="flex items-center gap-1.5">
-                    <CalendarIcon className="w-3.5 h-3.5 text-slate-400" strokeWidth={1.5} />
-                    <span>{trip?.start_date || 'Start date not set'} to {trip?.end_date || 'end date not set'}</span>
+                <div className="flex items-center gap-3 text-xs text-slate-500 mt-1 flex-wrap font-medium">
+                  <span className="flex items-center gap-1">
+                    <CalendarIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <span>{trip?.start_date || 'Upcoming'} – {trip?.end_date || 'TBD'}</span>
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400" strokeWidth={1.5} />
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
                     <span>{stops.length} stops, {stops.reduce((total, stop) => total + (stop.activities?.length || 0), 0)} activities</span>
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <Wallet className="w-3.5 h-3.5 text-teal-600" strokeWidth={1.5} />
-                    <span className="font-semibold text-slate-700 dark:text-slate-200">
-                      Budget ₹{totalBudget.toLocaleString('en-IN')}
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <Wallet className="w-3.5 h-3.5 text-slate-400" />
+                    <span className="font-semibold text-slate-800">
+                      ₹{totalBudget.toLocaleString('en-IN')}
                     </span>
                   </span>
                 </div>
               </div>
 
               {/* View mode switcher */}
-              <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-black/[0.04] dark:border-white/5 flex-wrap gap-1">
+              <div className="flex items-center p-1 rounded-xl bg-slate-100 border border-slate-200/80 flex-wrap gap-1">
                 <button
                   onClick={() => setViewMode('timeline')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     viewMode === 'timeline'
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  <Clock className="w-3.5 h-3.5 text-blue-600" strokeWidth={1.5} />
+                  <Clock className="w-3.5 h-3.5 text-blue-600" />
                   <span>Timeline</span>
                 </button>
                 <button
                   onClick={() => setViewMode('map')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     viewMode === 'map'
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  <MapPin className="w-3.5 h-3.5 text-indigo-600" strokeWidth={1.5} />
-                  <span>Interactive Map &amp; Trendy</span>
+                  <MapPin className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>Map</span>
                 </button>
                 <button
                   onClick={() => setViewMode('budget')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     viewMode === 'budget'
-                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  <Wallet className="w-3.5 h-3.5 text-teal-600" strokeWidth={1.5} />
+                  <Wallet className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Budget</span>
                 </button>
                 <Link
                   href={`/calendar?tripId=${tripId}`}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-medium transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-semibold transition-colors"
                 >
-                  <CalendarIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
+                  <CalendarIcon className="w-3.5 h-3.5 text-slate-500" />
                   <span>Calendar</span>
                 </Link>
                 <Link
                   href="/explore"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-medium transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-semibold transition-colors"
                 >
-                  <Globe className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
-                  <span>Explore Hub</span>
+                  <Globe className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Explore</span>
                 </Link>
               </div>
             </div>
