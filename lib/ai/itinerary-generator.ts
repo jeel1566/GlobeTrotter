@@ -178,9 +178,73 @@ export async function generateItinerary(params: {
   const { destination, days = 3, budget = 20000, interests = [] } = params;
   const normalizedDest = destination.toLowerCase().trim();
 
-  // 1. Check if Groq or Gemini API keys are configured for live AI
-  const groqKey = process.env.GROQ_API_KEY;
+  // 1. Check if Gemini or Groq API keys are configured for live AI
   const geminiKey = process.env.GEMINI_API_KEY;
+  const groqKey = process.env.GROQ_API_KEY;
+
+  if (geminiKey) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+      const prompt = `Create a realistic ${days}-day travel itinerary for ${destination} with a total budget of ₹${budget}.
+Interests: ${interests.join(', ') || 'general'}.
+Respond in strict JSON format:
+{
+  "days": [
+    {
+      "day": 1,
+      "title": "Short day theme",
+      "city": "${destination}",
+      "activities": [
+        {
+          "title": "Activity name",
+          "category": "adventure" | "food" | "nature" | "nightlife" | "culture",
+          "estimated_cost": 500,
+          "duration_minutes": 120,
+          "notes": "Short tip"
+        }
+      ]
+    }
+  ]
+}`;
+
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              thinkingConfig: { thinkingBudget: 0 },
+            },
+          }),
+          signal: controller.signal,
+        }
+      );
+
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const json = await res.json();
+        const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text) {
+          const parsed = JSON.parse(text);
+          if (parsed?.days && Array.isArray(parsed.days)) {
+            return {
+              fallback: false,
+              destination,
+              days: parsed.days,
+            };
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('Live Gemini generation timed out or failed, checking Groq/curated fallback:', err);
+    }
+  }
 
   if (groqKey) {
     try {
@@ -239,65 +303,6 @@ Return ONLY a valid JSON object matching this schema:
       }
     } catch (err) {
       console.warn('Live Groq AI generation failed or timed out, triggering curated fallback:', err);
-    }
-  } else if (geminiKey) {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-      const prompt = `Create a realistic ${days}-day travel itinerary for ${destination} with a total budget of ₹${budget}.
-Interests: ${interests.join(', ') || 'general'}.
-Respond in strict JSON format:
-{
-  "days": [
-    {
-      "day": 1,
-      "title": "Short day theme",
-      "city": "${destination}",
-      "activities": [
-        {
-          "title": "Activity name",
-          "category": "adventure",
-          "estimated_cost": 500,
-          "duration_minutes": 120,
-          "notes": "Short tip"
-        }
-      ]
-    }
-  ]
-}`;
-
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { responseMimeType: 'application/json' },
-          }),
-          signal: controller.signal,
-        }
-      );
-
-      clearTimeout(timeoutId);
-
-      if (res.ok) {
-        const json = await res.json();
-        const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (text) {
-          const parsed = JSON.parse(text);
-          if (parsed?.days && Array.isArray(parsed.days)) {
-            return {
-              fallback: false,
-              destination,
-              days: parsed.days,
-            };
-          }
-        }
-      }
-    } catch (err) {
-      console.warn('Live Gemini generation timed out or failed, using curated fallback:', err);
     }
   }
 
