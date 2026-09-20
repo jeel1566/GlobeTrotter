@@ -1,6 +1,25 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
 
-export default clerkMiddleware();
+const protectedPagePrefixes = [
+  '/admin',
+  '/calendar',
+  '/copilot',
+  '/dashboard',
+  '/profile',
+  '/trips',
+];
+
+export default clerkMiddleware(async (auth, request) => {
+  const isProtectedPage = protectedPagePrefixes.some(
+    (prefix) =>
+      request.nextUrl.pathname === prefix ||
+      request.nextUrl.pathname.startsWith(`${prefix}/`)
+  );
+
+  if (isProtectedPage) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [

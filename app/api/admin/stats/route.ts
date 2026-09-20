@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/auth/get-current-user';
 import { supabaseServer } from '@/lib/supabase/server';
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const user = await getCurrentUser();
     if (!user) {
@@ -18,12 +18,19 @@ export async function GET(_req: NextRequest) {
     }
 
     // Aggregations
-    const [{ count: totalUsers }, { count: totalTrips }, { count: publicTrips }] =
-      await Promise.all([
-        supabaseServer.from('users').select('*', { count: 'exact', head: true }),
-        supabaseServer.from('trips').select('*', { count: 'exact', head: true }),
-        supabaseServer.from('trips').select('*', { count: 'exact', head: true }).eq('visibility', 'public'),
-      ]);
+    const [
+      { count: totalUsers },
+      { count: totalTrips },
+      { count: publicTrips },
+      { count: totalActivities },
+      { count: totalAiGenerations },
+    ] = await Promise.all([
+      supabaseServer.from('users').select('*', { count: 'exact', head: true }),
+      supabaseServer.from('trips').select('*', { count: 'exact', head: true }),
+      supabaseServer.from('trips').select('*', { count: 'exact', head: true }).eq('visibility', 'public'),
+      supabaseServer.from('activities').select('*', { count: 'exact', head: true }),
+      supabaseServer.from('ai_generation_log').select('*', { count: 'exact', head: true }),
+    ]);
 
     // Popular cities aggregation
     const { data: stops } = await supabaseServer
@@ -48,6 +55,8 @@ export async function GET(_req: NextRequest) {
         total_users: totalUsers || 0,
         total_trips: totalTrips || 0,
         public_trips: publicTrips || 0,
+        total_activities: totalActivities || 0,
+        total_ai_generations: totalAiGenerations || 0,
         popular_cities: popularCities,
       },
     });

@@ -46,7 +46,7 @@ export async function POST(
         description: originalTrip.description,
         start_date: originalTrip.start_date,
         end_date: originalTrip.end_date,
-        budget_total: originalTrip.budget_total,
+        budget_total: 0,
         cover_image_url: originalTrip.cover_image_url,
         visibility: 'private',
         status: 'draft',

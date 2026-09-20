@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyWebhook } from '@clerk/nextjs/webhooks';
 import { supabaseServer } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const payload = await req.json();
-    const eventType = payload?.type;
-    const data = payload?.data;
+    const event = await verifyWebhook(req);
 
-    if (!eventType || !data) {
-      return NextResponse.json({ error: 'Missing event payload' }, { status: 400 });
-    }
-
-    if (eventType === 'user.created' || eventType === 'user.updated') {
+    if (event.type === 'user.created' || event.type === 'user.updated') {
+      const data = event.data;
       const clerkId = data.id;
       const email = data.email_addresses?.[0]?.email_address || `${clerkId}@example.com`;
       const name = [data.first_name, data.last_name].filter(Boolean).join(' ') || data.username || 'Traveler';
@@ -27,14 +23,14 @@ export async function POST(req: NextRequest) {
         },
         { onConflict: 'clerk_id' }
       );
-    } else if (eventType === 'user.deleted') {
-      const clerkId = data.id;
+    } else if (event.type === 'user.deleted') {
+      const clerkId = event.data.id;
       await supabaseServer.from('users').delete().eq('clerk_id', clerkId);
     }
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
     console.error('Clerk webhook error:', err);
-    return NextResponse.json({ error: err.message || 'Webhook error' }, { status: 500 });
+    return NextResponse.json({ error: 'Invalid webhook request' }, { status: 400 });
   }
 }

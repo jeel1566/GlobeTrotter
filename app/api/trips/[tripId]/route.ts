@@ -9,6 +9,9 @@ export async function GET(
   try {
     const { tripId } = params;
     const user = await getCurrentUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized', code: 'UNAUTHORIZED' }, { status: 401 });
+    }
 
     // Fetch trip with nested stops and activities
     const { data: trip, error } = await supabaseServer
@@ -24,33 +27,19 @@ export async function GET(
         budget_items:budget_items(
           id, category, label, amount
         ),
-        user:users(id, name, avatar_url)
+        user:users!trips_user_id_fkey(id, name, avatar_url)
       `)
       .eq('id', tripId)
       .single();
 
     if (error || !trip) {
+      if (error) console.error('Database query error in /api/trips/[tripId]:', error);
       return NextResponse.json({ error: 'Trip not found', code: 'NOT_FOUND' }, { status: 404 });
     }
 
-    // Access control: must be owner or trip must be public
-    const isOwner = user && user.id === trip.user_id;
-    if (!isOwner && trip.visibility !== 'public') {
-      return NextResponse.json({ error: 'Trip not found', code: 'NOT_FOUND' }, { status: 404 });
-    }
-
-    // If viewer is not owner, strip private budget items and notes per security spec
-    if (!isOwner) {
-      trip.budget_items = [];
-      if (trip.stops) {
-        trip.stops.forEach((s: any) => {
-          if (s.activities) {
-            s.activities.forEach((a: any) => {
-              delete a.notes;
-            });
-          }
-        });
-      }
+    // Access control: strictly owner-only even when trip is public
+    if (trip.user_id !== user.id) {
+      return NextResponse.json({ error: 'Trip not found or unauthorized', code: 'FORBIDDEN' }, { status: 403 });
     }
 
     // Sort stops and activities by order_index

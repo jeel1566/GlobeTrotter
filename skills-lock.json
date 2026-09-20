@@ -13,6 +13,12 @@
       "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
       "computedHash": "35e62aa423aaeab6a414bcac273f56dfb17802ef2334b41b6a3b00f28196c8cf"
     },
+    "gstack": {
+      "source": "garrytan/gstack",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "4b595d959822b66869c13557b33d0c21a40143f9e08006c5a3d93e4f53a6e1f7"
+    },
     "high-end-visual-design": {
       "source": "leonxlnx/taste-skill",
       "sourceType": "github",
