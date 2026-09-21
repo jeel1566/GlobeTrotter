@@ -2,6 +2,16 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { supabaseServer } from '@/lib/supabase/server';
 import { User } from '@/types/database';
 
+export function isEmailAdmin(email?: string | null): boolean {
+  if (!email) return false;
+  const adminEmailsEnv = process.env.ADMIN_EMAILS || '';
+  const adminEmails = adminEmailsEnv
+    .split(',')
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  return adminEmails.includes(email.trim().toLowerCase());
+}
+
 export async function getCurrentUser(): Promise<User | null> {
   const { userId } = await auth();
   if (!userId) {
@@ -16,6 +26,18 @@ export async function getCurrentUser(): Promise<User | null> {
     .single();
 
   if (existingUser && !error) {
+    // If the user matches ADMIN_EMAILS or Clerk metadata, ensure role is admin
+    if (existingUser.role !== 'admin' && isEmailAdmin(existingUser.email)) {
+      const { data: elevatedUser } = await supabaseServer
+        .from('users')
+        .update({ role: 'admin', updated_at: new Date().toISOString() })
+        .eq('id', existingUser.id)
+        .select()
+        .single();
+      if (elevatedUser) {
+        return elevatedUser as User;
+      }
+    }
     return existingUser as User;
   }
 
@@ -32,6 +54,9 @@ export async function getCurrentUser(): Promise<User | null> {
     clerkUser.username ||
     'Traveler';
   const avatar_url = clerkUser.imageUrl || null;
+  const isAdmin =
+    isEmailAdmin(email) || clerkUser.publicMetadata?.role === 'admin';
+  const initialRole = isAdmin ? 'admin' : 'user';
 
   const { data: newUser, error: insertError } = await supabaseServer
     .from('users')
@@ -41,7 +66,7 @@ export async function getCurrentUser(): Promise<User | null> {
         email,
         name,
         avatar_url,
-        role: 'user',
+        role: initialRole,
         ai_generations_today: 0,
         ai_generations_reset_at: new Date().toISOString(),
       },

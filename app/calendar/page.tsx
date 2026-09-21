@@ -49,7 +49,8 @@ function getCategoryBadgeClass(category: ActivityCategory): string {
 
 function CalendarContent() {
   const searchParams = useSearchParams();
-  const initialTripId = searchParams.get('tripId');
+  const rawTripId = searchParams.get('tripId');
+  const initialTripId = rawTripId && rawTripId !== 'undefined' ? rawTripId : null;
 
   // Trips list state
   const [trips, setTrips] = useState<Trip[]>([]);
@@ -109,6 +110,7 @@ function CalendarContent() {
 
   // 2. Fetch selected trip full details (stops and activities)
   const loadTripDetail = useCallback(async (tripId: string) => {
+    if (!tripId || tripId === 'undefined') return;
     setIsLoadingTripDetail(true);
     setTripDetailError(null);
     try {

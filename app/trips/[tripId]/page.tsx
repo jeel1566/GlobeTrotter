@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
   Sparkles,
@@ -113,8 +113,15 @@ function getBudgetCategoryBadgeClass(category: BudgetCategory): string {
 }
 
 export default function ItineraryBuilderPage() {
+  const router = useRouter();
   const params = useParams();
   const tripId = params.tripId as string;
+
+  useEffect(() => {
+    if (tripId === 'undefined') {
+      router.replace('/trips');
+    }
+  }, [tripId, router]);
 
   // View state: timeline, budget breakdown, or interactive map & trendy spots
   const [viewMode, setViewMode] = useState<'timeline' | 'budget' | 'map'>('timeline');
@@ -220,7 +227,7 @@ export default function ItineraryBuilderPage() {
 
   // 1. Fetch Trip details (stops and activities)
   const loadTrip = useCallback(async () => {
-    if (!tripId) return;
+    if (!tripId || tripId === 'undefined') return;
     setTripError(null);
     try {
       const res = await fetch(`/api/trips/${tripId}`);
@@ -281,7 +288,7 @@ export default function ItineraryBuilderPage() {
 
   // 2. Fetch Budget Summary (rollups + manual items)
   const loadBudget = useCallback(async () => {
-    if (!tripId) return;
+    if (!tripId || tripId === 'undefined') return;
     setIsLoadingBudget(true);
     setBudgetError(null);
     try {

@@ -3,12 +3,18 @@ import { getCurrentUser } from '@/lib/auth/get-current-user';
 import { supabaseServer } from '@/lib/supabase/server';
 import { BudgetCategory, BudgetSummary } from '@/types/database';
 
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { tripId: string } }
 ) {
   try {
     const { tripId } = params;
+    if (!tripId || !UUID_REGEX.test(tripId)) {
+      return NextResponse.json({ error: 'Invalid trip ID format', code: 'BAD_REQUEST' }, { status: 400 });
+    }
+
     const user = await getCurrentUser();
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized', code: 'UNAUTHORIZED' }, { status: 401 });

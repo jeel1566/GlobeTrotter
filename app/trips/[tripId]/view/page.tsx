@@ -161,10 +161,11 @@ export default function SharedItineraryViewPage() {
       }
 
       const json = await res.json();
-      if (json.data?.new_trip_id) {
-        router.push(`/trips/${json.data.new_trip_id}`);
+      const newId = json.data?.new_trip_id || json.data?.id || json.data?.trip_id;
+      if (newId && newId !== 'undefined') {
+        router.push(`/trips/${newId}`);
       } else {
-        throw new Error('Trip cloned successfully but new ID was missing');
+        router.push('/trips');
       }
     } catch (err: any) {
       console.error('Failed to copy trip:', err);

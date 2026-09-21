@@ -2,12 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/auth/get-current-user';
 import { supabaseServer } from '@/lib/supabase/server';
 
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export async function POST(
   req: NextRequest,
   { params }: { params: { tripId: string } }
 ) {
   try {
     const { tripId } = params;
+
+    if (!tripId || !UUID_REGEX.test(tripId)) {
+      return NextResponse.json({ error: 'Invalid trip ID format', code: 'BAD_REQUEST' }, { status: 400 });
+    }
+
     const user = await getCurrentUser();
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized', code: 'UNAUTHORIZED' }, { status: 401 });
@@ -46,7 +53,7 @@ export async function POST(
         description: originalTrip.description,
         start_date: originalTrip.start_date,
         end_date: originalTrip.end_date,
-        budget_total: 0,
+        budget_total: originalTrip.budget_total || 0,
         cover_image_url: originalTrip.cover_image_url,
         visibility: 'private',
         status: 'draft',
@@ -92,7 +99,31 @@ export async function POST(
       }
     }
 
-    return NextResponse.json({ data: { new_trip_id: newTrip.id } }, { status: 201 });
+    // 4. Clone budget items
+    const { data: budgetItems } = await supabaseServer
+      .from('budget_items')
+      .select('category, label, amount')
+      .eq('trip_id', tripId);
+
+    if (budgetItems && budgetItems.length > 0) {
+      await supabaseServer.from('budget_items').insert(
+        budgetItems.map((b: any) => ({
+          trip_id: newTrip.id,
+          category: b.category,
+          label: b.label,
+          amount: b.amount,
+        }))
+      );
+    }
+
+    return NextResponse.json({
+      data: {
+        id: newTrip.id,
+        new_trip_id: newTrip.id,
+        trip_id: newTrip.id,
+        trip: newTrip,
+      },
+    }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: err.message || 'Internal error', code: 'SERVER_ERROR' }, { status: 500 });
   }

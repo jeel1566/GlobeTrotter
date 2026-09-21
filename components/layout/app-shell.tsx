@@ -32,15 +32,23 @@ interface NavItem {
   badge?: string;
 }
 
-const NAV_ITEMS: NavItem[] = [
+const BASE_NAV_ITEMS: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Trips', href: '/trips', icon: Compass },
   { name: 'Explore', href: '/explore', icon: MapPin },
   { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
   { name: 'Community', href: '/community', icon: Users },
   { name: 'Profile', href: '/profile', icon: User },
-  { name: 'Admin', href: '/admin', icon: BarChart3 },
 ];
+
+const ADMIN_NAV_ITEM: NavItem = {
+  name: 'Admin',
+  href: '/admin',
+  icon: BarChart3,
+  badge: 'Staff',
+};
+
+let cachedAdminStatus: boolean | null = null;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -49,6 +57,52 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [isCopilotOpen, setIsCopilotOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Admin status check: only users with admin role see Admin navigation
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    if (cachedAdminStatus !== null) return cachedAdminStatus;
+    return (user?.publicMetadata as any)?.role === 'admin';
+  });
+
+  React.useEffect(() => {
+    if ((user?.publicMetadata as any)?.role === 'admin') {
+      cachedAdminStatus = true;
+      setIsAdmin(true);
+      return;
+    }
+
+    if (cachedAdminStatus !== null) {
+      setIsAdmin(cachedAdminStatus);
+      return;
+    }
+
+    let isMounted = true;
+    async function checkRole() {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const json = await res.json();
+          cachedAdminStatus = !!json.isAdmin;
+          if (isMounted) {
+            setIsAdmin(cachedAdminStatus);
+          }
+        }
+      } catch {
+        // silent fail
+      }
+    }
+
+    if (user) {
+      checkRole();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [user]);
+
+  const navItems = React.useMemo(() => {
+    return isAdmin ? [...BASE_NAV_ITEMS, ADMIN_NAV_ITEM] : BASE_NAV_ITEMS;
+  }, [isAdmin]);
 
   // Copilot Chat State
   const [copilotMessages, setCopilotMessages] = useState<
@@ -153,7 +207,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
           {/* Main Navigation Menu */}
           <nav className="space-y-1">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href || pathname?.startsWith(item.href + '/');
               return (
@@ -177,7 +231,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     <span>{item.name}</span>
                   </div>
                   {item.badge && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">
                       {item.badge}
                     </span>
                   )}
@@ -192,9 +246,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-3">
             <UserButton afterSignOutUrl="/" />
             <div className="flex flex-col min-w-0">
-              <span className="text-xs font-semibold text-slate-800 truncate">
-                {user?.fullName || user?.firstName || 'Traveler'}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-slate-800 truncate">
+                  {user?.fullName || user?.firstName || 'Traveler'}
+                </span>
+                {isAdmin && (
+                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-purple-100 text-purple-700 border border-purple-200 uppercase tracking-wider">
+                    Admin
+                  </span>
+                )}
+              </div>
               <span className="text-[11px] text-slate-400 truncate">
                 {user?.primaryEmailAddress?.emailAddress || 'Explorer'}
               </span>
@@ -397,6 +458,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <CalendarIcon className="mr-2 h-4 w-4" />
               <span>Trip Calendar</span>
             </CommandItem>
+            {isAdmin && (
+              <CommandItem onSelect={() => { router.push('/admin'); setIsSearchOpen(false); }}>
+                <BarChart3 className="mr-2 h-4 w-4 text-purple-600" />
+                <span>Admin & System Telemetry</span>
+              </CommandItem>
+            )}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
@@ -411,17 +478,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <span className="font-bold text-lg font-heading">GlobeTrotter</span>
           </div>
           <nav className="space-y-2">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-100 font-medium text-sm"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl text-slate-700 hover:bg-slate-100 font-medium text-sm"
                 >
-                  <Icon className="w-4 h-4 text-slate-400" />
-                  <span>{item.name}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-4 h-4 text-slate-400" />
+                    <span>{item.name}</span>
+                  </div>
+                  {item.badge && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">
+                      {item.badge}
+                    </span>
+                  )}
                 </Link>
               );
             })}

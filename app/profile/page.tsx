@@ -10,6 +10,7 @@ import {
   Sparkles,
   ArrowRight,
   Info,
+  ShieldCheck,
 } from 'lucide-react';
 import { AppShell } from '@/components/layout/app-shell';
 import { Button } from '@/components/ui/button';
@@ -71,6 +72,38 @@ export default function ProfilePage() {
   const { user, isLoaded } = useUser();
   const [trips, setTrips] = useState<TripSummary[]>([]);
   const [loadingTrips, setLoadingTrips] = useState(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    return (user?.publicMetadata as any)?.role === 'admin';
+  });
+
+  useEffect(() => {
+    if ((user?.publicMetadata as any)?.role === 'admin') {
+      setIsAdmin(true);
+      return;
+    }
+
+    let isMounted = true;
+    async function checkAdminRole() {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const json = await res.json();
+          if (isMounted && json.isAdmin) {
+            setIsAdmin(true);
+          }
+        }
+      } catch {
+        // silent fail
+      }
+    }
+
+    if (user) {
+      checkAdminRole();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [user]);
 
   useEffect(() => {
     async function fetchUserTrips() {
@@ -136,9 +169,16 @@ export default function ProfilePage() {
                   <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
                     {isLoaded ? displayName : 'Loading profile...'}
                   </h1>
-                  <span className="px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono text-[10px] font-bold uppercase tracking-wider">
-                    Traveler
-                  </span>
+                  {isAdmin ? (
+                    <span className="px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-purple-200 dark:border-purple-800">
+                      <ShieldCheck className="w-3 h-3" />
+                      Administrator
+                    </span>
+                  ) : (
+                    <span className="px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono text-[10px] font-bold uppercase tracking-wider">
+                      Traveler
+                    </span>
+                  )}
                   {publicTripsCount > 0 && (
                     <span className="px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/60 text-teal-700 dark:text-teal-300 font-mono text-[10px] font-bold uppercase tracking-wider">
                       Published Author
@@ -169,6 +209,18 @@ export default function ProfilePage() {
 
             {/* Profile Action Buttons */}
             <div className="flex items-center gap-3 self-end md:self-auto">
+              {isAdmin && (
+                <Link href="/admin">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full text-xs border-purple-300 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-1.5 font-semibold shadow-xs"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Admin Telemetry</span>
+                  </Button>
+                </Link>
+              )}
               <Link href="/trips/create">
                 <Button size="sm" className="rounded-full text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                   New Trip

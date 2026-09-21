@@ -159,11 +159,15 @@ export default function CommunityPage() {
         throw new Error(errJson.error || 'Failed to clone trip');
       }
       const json = await res.json();
-      setForkSuccess(`Forked "${trip.title}" into your trips workspace!`);
+      const clonedId = json.data?.id || json.data?.new_trip_id || json.data?.trip_id;
       setTimeout(() => {
         setForkSuccess(null);
-        router.push(`/trips/${json.data?.id}`);
-      }, 1200);
+        if (clonedId && clonedId !== 'undefined') {
+          router.push(`/trips/${clonedId}`);
+        } else {
+          router.push('/trips');
+        }
+      }, 1000);
     } catch (err: any) {
       setForkError(err.message || 'Failed to clone trip');
       setTimeout(() => setForkError(null), 4000);
